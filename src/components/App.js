@@ -1,7 +1,16 @@
 import React from 'react';
 
+const nameArray = ["Jason", "Krystin", "Gyno", "Kevin", "Andrew"];
+
+
 function App() {
-  return <h1>APP!!!</h1>
+  return (
+    <div>
+      {
+        nameArray
+      }
+    </div>
+  )
 }
 
 export default App;

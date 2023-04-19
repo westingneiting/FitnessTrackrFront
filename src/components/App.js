@@ -1,14 +1,11 @@
 import React from 'react';
-
-const nameArray = ["Jason", "Krystin", "Gyno", "Kevin", "Andrew"];
+import { Register } from './';
 
 
 function App() {
   return (
     <div>
-      {
-        nameArray
-      }
+      <Register />
     </div>
   )
 }

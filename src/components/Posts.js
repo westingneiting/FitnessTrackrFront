@@ -5,11 +5,13 @@ function Posts({ posts }) {
 
   return (
     <>
-    {
-      posts && posts.map((post) => {
-        return <p key={post._id}>{posts.title}</p>
-      })
-    }
+      {
+        posts && posts.map((post) => {
+          return (
+            <p key={post._id}>{post.title}</p>
+          ) 
+        })
+      }
     </>
   );
 }

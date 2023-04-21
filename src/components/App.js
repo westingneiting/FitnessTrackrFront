@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom'; //eventually we'll include Link with Routes and Route
 import { 
   Register,
-  Posts
+  Posts, 
+  Login,
+  CreatePost
 } from './';
+
 import { fetchPosts } from '../ajax-requests';
 
 
@@ -42,9 +45,18 @@ function App() {
         element={<Posts posts={posts} />}
         />
         <Route 
-          path='register' 
+          path='/register' 
           element={<Register setToken={setToken} />}
         />
+        <Route 
+          path='/login'
+          element={<Login setToken={setToken} />}
+        />
+        <Route 
+           path='/create-post'
+           element={<CreatePost token={token} getPosts={getPosts} />}
+        />
+
       </Routes>
     </div>
   );

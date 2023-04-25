@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { registerUser } from '../ajax-requests';
 
-function Register({ setToken }) {
+function Register({ setToken, navigate }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   
@@ -20,7 +20,8 @@ function Register({ setToken }) {
     
     if (results.success) {
       setToken(results.data.token);
-      window.localStorage.setItem("token", results.data.token)
+      window.localStorage.setItem("token", results.data.token);
+      navigate('/login'); // this changes the route to posts when you register
     }
     
   }

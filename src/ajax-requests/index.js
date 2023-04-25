@@ -19,7 +19,7 @@ export const registerUser = async (user) => {
     const result = await response.json();
     // You can log ▲▲▲ the result
     // here ▼▼▼ to view the json object before returning it
-    // console.log(result);
+    console.log(result);
     return result;
   } catch (err) {
     console.error(err);

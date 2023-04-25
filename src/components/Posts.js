@@ -1,17 +1,23 @@
-import React from "react";
+import React, { Fragment } from "react";
 
-function Posts({ posts }) {
+function Posts({ posts, isLoggedIn }) {
 //   console.log('from Posts component', posts)
 
   return (
     <>
-      {
-        posts && posts.map((post) => {
+      {posts && 
+        posts.map((post) => {
           return (
-            <p key={post._id}>{post.title}</p>
-          ) 
-        })
-      }
+            <Fragment key={post._id}>
+                <p>{post.title}</p>
+              {post.isAuthor ? (
+                <button>Delete</button>
+              ) : isLoggedIn ? (
+                <button>Message</button>
+              ) : null}
+            </Fragment>
+          );
+        })}
     </>
   );
 }

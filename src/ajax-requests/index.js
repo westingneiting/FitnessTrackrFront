@@ -1,5 +1,7 @@
-const COHORT_NAME = '2301-ftb-et-web-pt'
+const COHORT_NAME = '2301-ftb-et-web-pt';
 const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
+// const POST_ID = post._id
+// mess with variable above to begin updating/deleting posts
 
 
 // USER API REQUESTS ========================================================
@@ -44,12 +46,33 @@ export const login = async (user) => {
   }
 };
 
+export const myData = async (token) => {
+  try {
+    const response = await fetch(`${BASE_URL}/users/me`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+    });
+    const result = await response.json();
+    // console.log(result);
+    return result
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 
 
 // POSTS REQUEST ROUTES ======================================================
-export const fetchPosts = async () => {
+export const fetchPosts = async (token) => {
   try {
-    const response = await fetch(`${BASE_URL}/posts`)
+    const response = await fetch(`${BASE_URL}/posts`, {
+      headers: {
+        'Content-Type': "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    });
 
     const result = await response.json();
     // console.log(result);

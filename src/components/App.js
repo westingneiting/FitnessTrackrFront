@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom'; //eventually we'll include Link with Routes and Route
+import { Routes, Route, useNavigate } from 'react-router-dom'; //eventually we'll include Link with Routes and Route
 import { 
   Register,
   Posts, 
   Login,
-  CreatePost
+  CreatePost,
+  Nav
 } from './';
 
-import { fetchPosts } from '../ajax-requests';
+import { fetchPosts, myData } from '../ajax-requests';
 
 
 function App() {
   const [token, setToken] = useState('');
   const [posts, setPosts] = useState([]);
+  const [user, setUser] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const navigate = useNavigate();
   
   function tokenCheck() {
     if (window.localStorage.getItem('token')) {
@@ -21,24 +26,40 @@ function App() {
   }
 
   async function getPosts() {
-    const results = await fetchPosts();
+    const results = await fetchPosts(token);
     if (results.success) {
       setPosts(results.data.posts)
     }
   }
   
+  async function getMyData() {
+    const results = await myData(token);
+    if (results.success){
+      setUser(results.data);
+    }
+  }
+
   useEffect(() => {
     tokenCheck();
   }, [])
   
   useEffect (() => {
    getPosts();
+   if (token) {
+    getMyData();
+    setIsLoggedIn(true);
+   }
   }, [token])
 
-  // use this console log as you build useeffects console.log(posts)
+  // console.log(posts);
+  // use this ^^ console log as you build useeffects e.g. console.log(posts)
   
   return (
     <div>
+      <Nav 
+      setToken={setToken}
+      setIsLoggedIn={setIsLoggedIn}
+      isLoggedIn={isLoggedIn} />
       <Routes>
         <Route 
         path='/'
@@ -46,11 +67,11 @@ function App() {
         />
         <Route 
           path='/register' 
-          element={<Register setToken={setToken} />}
+          element={<Register setToken={setToken} navigate={navigate} />}
         />
         <Route 
           path='/login'
-          element={<Login setToken={setToken} />}
+          element={<Login setToken={setToken} navigate={navigate} />}
         />
         <Route 
            path='/create-post'

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { makePost } from '../ajax-requests';
 import { Link } from 'react-router-dom';
+import Button from '@mui/material/Button';
 
 function CreatePost({ token, getPosts }) {
   const [title, setTitle] = useState('');
@@ -38,8 +39,7 @@ function CreatePost({ token, getPosts }) {
         value={price}
         onChange={({target: {value}}) => {setPrice(value)}} //this is the same as the onChanges above, just written different
       />
-      <button type='submit'>Create Post</button>
-      <Link to='/'>Go Home</Link>
+      <Button type='submit' variant='contained'>Post</Button>
     </form>
   )
 }

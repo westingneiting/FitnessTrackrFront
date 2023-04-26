@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { login } from '../ajax-requests';
+import Button from '@mui/material/Button';
 
 function Login({ setToken, navigate }) {
     const [username, setUsername] = useState('');
@@ -38,7 +39,7 @@ function Login({ setToken, navigate }) {
         placeholder='Enter Password'
         onChange={(event) => setPassword(event.target.value)}
       />
-      <button type='submit'>Submit</button>
+      <Button type='submit' variant="contained">Submit</Button>
     </form>
   )
 }

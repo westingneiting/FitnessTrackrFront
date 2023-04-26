@@ -1,7 +1,13 @@
 import React, { Fragment } from "react";
+import Button from '@mui/material/Button';
 
 function Posts({ posts, isLoggedIn }) {
 //   console.log('from Posts component', posts)
+if (!isLoggedIn) {
+  return (
+    <p>Log in to see posts!</p>
+  );
+}
 
   return (
     <>
@@ -11,9 +17,9 @@ function Posts({ posts, isLoggedIn }) {
             <Fragment key={post._id}>
                 <p>{post.title}</p>
               {post.isAuthor ? (
-                <button>Delete</button>
+                <Button variant="outlined">Delete</Button>
               ) : isLoggedIn ? (
-                <button>Message</button>
+                <Button variant="contained">Message</Button>
               ) : null}
             </Fragment>
           );

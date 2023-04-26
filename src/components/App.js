@@ -8,6 +8,7 @@ import {
   Nav
 } from './';
 
+
 import { fetchPosts, myData } from '../ajax-requests';
 
 
@@ -94,20 +95,32 @@ function App() {
       navigate={navigate} />
       <Routes>
         <Route 
-        path='/'
-        element={<Posts posts={posts} isLoggedIn={isLoggedIn} />}
+          path='/'
+          element={<Posts 
+            posts={posts} 
+            isLoggedIn={isLoggedIn} 
+          />}
         />
         <Route 
           path='/register' 
-          element={<Register setToken={setToken} navigate={navigate} />}
+          element={<Register 
+            setToken={setToken} 
+            navigate={navigate}
+          />}
         />
         <Route 
           path='/login'
-          element={<Login setToken={setToken} navigate={navigate} />}
+          element={<Login 
+            setToken={setToken} 
+            navigate={navigate} 
+          />}
         />
         <Route 
            path='/create-post'
-           element={<CreatePost token={token} getPosts={getPosts} />}
+           element={<CreatePost 
+            token={token} 
+            getPosts={getPosts} 
+          />}
         />
 
       </Routes>

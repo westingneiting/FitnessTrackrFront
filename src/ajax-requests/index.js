@@ -103,3 +103,20 @@ export const makePost = async (post, token) => {
   }
 };
 
+export const deletePost = async (POST_ID, token) => {
+  try {
+    const response = await fetch(`${BASE_URL}/posts/${POST_ID}`, {
+      method: "DELETE",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      }
+    });
+    const result = await response.json();
+    // console.log(result);
+    return result
+  } catch (err) {
+    console.error(err);
+  }
+};
+

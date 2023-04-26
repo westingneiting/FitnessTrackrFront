@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { makePost } from '../ajax-requests';
-import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 
 function CreatePost({ token, getPosts }) {
@@ -10,6 +9,7 @@ function CreatePost({ token, getPosts }) {
 
   async function handleSubmit(event) {
     event.preventDefault();
+    console.log('handlesubmitted')
     const post = {title, description, price}
 
     const results = await makePost(post, token)
@@ -39,9 +39,11 @@ function CreatePost({ token, getPosts }) {
         value={price}
         onChange={({target: {value}}) => {setPrice(value)}} //this is the same as the onChanges above, just written different
       />
-      <Button type='submit' variant='contained'>Post</Button>
+      <Button type='submit' variant='contained'>
+        Post
+      </Button>
     </form>
-  )
+  );
 }
 
 export default CreatePost;

@@ -14,36 +14,6 @@ import { fetchPosts, myData } from '../ajax-requests';
 
 function App() {
 
-  // possible search term functionality: 
-
-  //   const [posts, setPosts] = useState([]);
-  //   const [searchTerm, setSearchTerm] = useState('');
-  
-  //   useEffect(() => {
-    // fetch(BASE_URL)
-    // .then(response => response.json())
-    // .then(data => setPosts(data))
-    // .catch(error => console.error(error));
-  //   }, []);
-  
-  //   function postMatches(post, text) {
-    // const lowerCaseText = text.toLowerCase();
-    // return title.toLowerCase().includes(lowerCaseText) ||
-    //   content.toLowerCase().includes(lowerCaseText) ||
-    //   author.toLowerCase().includes(lowerCaseText);
-  //   }
-  
-  //   const filteredPosts = posts.filter(post => postMatches(post, searchTerm));
-  //   const postsToDisplay = searchTerm.length ? filteredPosts : posts;
-  
-  //   return (
-  //     <div>
-  //       <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-  //       <Posts posts={postsToDisplay} />
-  //     </div>
-  //   );
-  // }
-
   const [token, setToken] = useState('');
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState({});
@@ -99,6 +69,8 @@ function App() {
           element={<Posts 
             posts={posts} 
             isLoggedIn={isLoggedIn} 
+            token={token}
+            getPosts={getPosts}
           />}
         />
         <Route 

@@ -19,12 +19,16 @@ function Nav({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
         <h1>Stranger's Things</h1>
         {isLoggedIn ? (
           <>
+          {location.pathname !== '/create-post' && (
             <Button>
-              <Link to='/create-post' style={{color: '#4285F4', textDecoration: 'none'}}>Create Post</Link>
+              <Link to='/create-post' style={{color: 'inherit', textDecoration: 'none'}}>Create Post</Link>
             </Button>
-            <Button>
-              <Link to='/' style={{color: '#4285F4', textDecoration: 'none'}}>Go Home</Link>
-            </Button>
+          )}
+            {location.pathname !== '/' && (
+              <Button>
+                <Link to='/' style={{color: 'inherit', textDecoration: 'none'}}>Go Home</Link>
+              </Button>
+            )}
             <Button onClick={logout} variant="outlined">Log Out</Button>
           </>
         ) : null}
@@ -34,7 +38,7 @@ function Nav({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
             <>
             <p>Already have an account?</p>
             <Button variant="outlined">
-                <Link to='/login' style={{color: '#4285F4', textDecoration: 'none'}}>Login</Link>
+                <Link to='/login' style={{color: 'inherit', textDecoration: 'none'}}>Login</Link>
             </Button>
             </>
             )}
@@ -42,7 +46,7 @@ function Nav({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
               <>
               <p>Don't have an account?</p>
             <Button variant="outlined">
-                <Link to='/register' style={{color: '#4285F4', textDecoration: 'none'}}>Register</Link>
+                <Link to='/register' style={{color: 'inherit', textDecoration: 'none'}}>Register</Link>
             </Button>
             </>
             )}

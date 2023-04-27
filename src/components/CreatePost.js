@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import { makePost } from '../ajax-requests';
 import Button from '@mui/material/Button';
 
-function CreatePost({ token, getPosts }) {
+function CreatePost({ token, getPosts, navigate }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
 
   async function handleSubmit(event) {
     event.preventDefault();
-    console.log('handlesubmitted')
     const post = {title, description, price}
 
     const results = await makePost(post, token)
 
     if (results.success) {
         getPosts();
+        navigate('/');
     } 
 }
 

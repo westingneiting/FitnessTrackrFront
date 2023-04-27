@@ -5,7 +5,8 @@ import {
   Posts, 
   Login,
   CreatePost,
-  Nav
+  Nav,
+  UpdatePost
 } from './';
 
 
@@ -91,10 +92,19 @@ function App() {
            path='/create-post'
            element={<CreatePost 
             token={token} 
-            getPosts={getPosts} 
+            getPosts={getPosts}
+            navigate={navigate}
           />}
         />
-
+        <Route 
+          path='/update-post/:postId'
+          element={<UpdatePost 
+            posts={posts} 
+            token={token}
+            getPosts={getPosts}
+            navigate={navigate}
+          />}
+        />
       </Routes>
     </div>
   );

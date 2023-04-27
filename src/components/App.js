@@ -6,7 +6,8 @@ import {
   Login,
   CreatePost,
   Nav,
-  UpdatePost
+  UpdatePost,
+  SendMessage
 } from './';
 
 
@@ -104,6 +105,15 @@ function App() {
             getPosts={getPosts}
             navigate={navigate}
           />}
+        />
+        <Route 
+        path='/send-message/:postId'
+        element={<SendMessage
+        posts={posts}
+        token={token}
+        getPosts={getPosts}
+        navigate={navigate}
+        />}
         />
       </Routes>
     </div>

@@ -39,7 +39,9 @@ function Posts({ posts, isLoggedIn, token, getPosts }) {
                 </>
               )}
               {!post.isAuthor && (
-                <Button variant="contained">Message</Button>
+                <Link to={`/send-message/${post._id}`}>
+                 <Button variant="contained">Message</Button>
+                </Link>
               )}
             </Fragment>
           );

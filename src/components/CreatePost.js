@@ -6,10 +6,13 @@ function CreatePost({ token, getPosts, navigate }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
+  const [location, setLocation] = useState('');
+  const [willDeliver, setWillDeliver] = useState('');
+
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const post = {title, description, price}
+    const post = {title, description, price, location, willDeliver}
 
     const results = await makePost(post, token)
 
@@ -39,6 +42,20 @@ function CreatePost({ token, getPosts, navigate }) {
         value={price}
         onChange={({target: {value}}) => {setPrice(value)}} //this is the same as the onChanges above, just written different
       />
+      <input 
+      type='text'
+      placeholder='Enter Location'
+      value={location}
+      onChange={(ev) => setLocation(ev.target.value)}
+      />
+      <label>
+        <input 
+        type='checkbox'
+        checked={willDeliver}
+        onChange={() => setWillDeliver(!willDeliver)}
+        />
+        Delivery available?
+      </label>
       <Button type='submit' variant='contained'>
         Post
       </Button>

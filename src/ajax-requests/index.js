@@ -142,3 +142,23 @@ export const deletePost = async (postId, token) => {
   }
 };
 
+// MESSAGE REQUESTS ==========================================================
+export const postMessage = async (postId, message, token) => {
+  try {
+    const response = await fetch(`${BASE_URL}/posts/${postId}/messages`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        message
+      })
+    });
+    const result = await response.json();
+    console.log(result);
+    return result
+  } catch (err) {
+    console.error(err);
+  }
+}

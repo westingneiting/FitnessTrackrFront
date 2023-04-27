@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { updatePost } from "../ajax-requests";
-import { Button } from "@mui/material";
+import Button from "@mui/material/Button";
 
 
 function UpdatePost({ posts, token, getPosts, navigate }) {
@@ -45,30 +45,35 @@ function UpdatePost({ posts, token, getPosts, navigate }) {
         <form onSubmit={handleSubmit}>
             <input 
             type='text'
+            placeholder='Enter Title'
             value={updatedTitle}
             onChange={(ev) => setTitle(ev.target.value)}
             />
             <input 
             type='text'
+            placeholder='Enter Description'
             value={updatedDescription}
             onChange={(ev) => setDescription(ev.target.value)}
             />
             <input 
             type='text'
+            placeholder='Enter Price'
             value={updatedPrice}
             onChange={(ev) => setPrice(ev.target.value)}
             />
             <input 
             type='text'
+            placeholder='Enter Location'
             value={updatedLocation}
             onChange={(ev) => setLocation(ev.target.value)}
             />
+            <label htmlFor='checkbox'>Delivery available?</label>
             <input 
             type='checkbox'
             checked={updatedWillDeliver}
             onChange={() => setWillDeliver(!updatedWillDeliver)}
             />
-            <Button type='submit'>Save Changes</Button>
+            <Button variant="contained" type='submit'>Save Changes</Button>
         </form>
         {
             errorMessage && <p>{errorMessage}</p>

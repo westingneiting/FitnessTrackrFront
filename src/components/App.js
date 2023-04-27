@@ -64,7 +64,8 @@ function App() {
       setToken={setToken}
       setIsLoggedIn={setIsLoggedIn}
       isLoggedIn={isLoggedIn}
-      navigate={navigate} />
+      navigate={navigate}
+      />
       <Routes>
         <Route 
           path='/'

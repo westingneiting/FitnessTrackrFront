@@ -3,6 +3,10 @@ import { useParams } from "react-router-dom";
 import { postMessage } from "../ajax-requests";
 import Button from "@mui/material/Button";
 
+const styles = {
+    fontFamily: 'Roboto'
+  };
+
 function SendMessage({ posts, token, getPosts, navigate}) {
   const { postId } = useParams();
   const[post] = posts.filter((post) => post._id === postId);
@@ -24,9 +28,9 @@ function SendMessage({ posts, token, getPosts, navigate}) {
         <>
             {post ? (
                 <>
-            <h2>Message owner of '{post.title}': </h2>
+            <h2 style={styles}>Message owner of '{post.title}': </h2>
             <form onSubmit={handleSubmit}>
-                <label htmlFor='content'>New Message: </label>
+                <label htmlFor='content' style={styles}>New Message: </label>
                 <input 
                 type='text'
                 id='content'
@@ -37,7 +41,7 @@ function SendMessage({ posts, token, getPosts, navigate}) {
             </form>
                 </>
             ) : (
-                <h3>Loading...</h3>
+                <h3 style={styles}>Loading...</h3>
             )}
         </>
     );

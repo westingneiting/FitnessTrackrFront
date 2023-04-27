@@ -3,6 +3,10 @@ import { useParams } from "react-router-dom";
 import { updatePost } from "../ajax-requests";
 import Button from "@mui/material/Button";
 
+const styles = {
+  fontFamily: 'Roboto'
+};
+
 
 function UpdatePost({ posts, token, getPosts, navigate }) {
   const { postId } = useParams();
@@ -67,7 +71,7 @@ function UpdatePost({ posts, token, getPosts, navigate }) {
             value={updatedLocation}
             onChange={(ev) => setLocation(ev.target.value)}
             />
-            <label htmlFor='checkbox'>Delivery available?</label>
+            <label htmlFor='checkbox' style={styles}>Delivery available?</label>
             <input 
             type='checkbox'
             checked={updatedWillDeliver}
@@ -80,7 +84,7 @@ function UpdatePost({ posts, token, getPosts, navigate }) {
         }
         </>
       ) : (
-        <h1>Post does not exist.</h1>
+        <h1 style={styles}>Post does not exist.</h1>
     )}
     </>
   );

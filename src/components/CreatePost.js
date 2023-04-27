@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { makePost } from '../ajax-requests';
 import Button from '@mui/material/Button';
 
+const styles = {
+  fontFamily: 'Roboto'
+};
+
 function CreatePost({ token, getPosts, navigate }) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -48,14 +52,12 @@ function CreatePost({ token, getPosts, navigate }) {
       value={location}
       onChange={(ev) => setLocation(ev.target.value)}
       />
-      <label>
-        <input 
+        <label htmlFor='checkbox' style={styles}>Delivery available?</label>
+        <input
         type='checkbox'
         checked={willDeliver}
         onChange={() => setWillDeliver(!willDeliver)}
         />
-        Delivery available?
-      </label>
       <Button type='submit' variant='contained'>
         Post
       </Button>

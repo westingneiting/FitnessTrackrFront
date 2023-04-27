@@ -6,5 +6,4 @@ export { default as CreatePost } from './CreatePost';
 export { default as Nav } from './Nav';
 export { default as UpdatePost } from './UpdatePost';
 export { default as SendMessage } from './SendMessage';
-import '@fontsource/roboto';
 

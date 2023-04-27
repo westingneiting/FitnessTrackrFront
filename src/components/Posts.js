@@ -4,7 +4,13 @@ import { deletePost } from "../ajax-requests";
 import { Button, TextField } from '@mui/material';
 
 const styles = {
-  fontFamily: 'Roboto'
+  fontFamily: 'Roboto',
+  searchBar: {
+    marginTop: '15px',
+    marginBottom: '8px',
+    width: '100%',
+    maxWidth: '350px',
+  },
 };
 
 function Posts({ posts, isLoggedIn, token, getPosts }) {
@@ -33,18 +39,14 @@ function Posts({ posts, isLoggedIn, token, getPosts }) {
 
   const filteredPosts = filterPosts(posts, searchQuery);
 
-  if (!isLoggedIn) {
-    return (
-      <p style={styles}>Log in to see posts!</p>
-    );
-  }
-
   return (
     <>
     <TextField
       label="Search posts"
       value={searchQuery}
       onChange={handleSearchChange}
+      style={styles.searchBar}
+      size='small'
     />
       {filteredPosts.length === 0 ? (
         <p style={styles}>No posts found</p>
@@ -53,13 +55,13 @@ function Posts({ posts, isLoggedIn, token, getPosts }) {
           return (
             <Fragment key={post._id}>
                 <p style={styles}>{post.title}</p>
-              {post.isAuthor && (
+              {isLoggedIn && post.isAuthor && (
                 <>
                   <Button variant="outlined" onClick={() => handleDelete(post._id, token, getPosts)}>Delete</Button>
                   <Link to={`/update-post/${post._id}`}><Button>Edit Post</Button></Link>
                 </>
               )}
-              {!post.isAuthor && (
+              {isLoggedIn && !post.isAuthor && (
                 <Link to={`/send-message/${post._id}`}>
                  <Button variant="contained">Message</Button>
                 </Link>

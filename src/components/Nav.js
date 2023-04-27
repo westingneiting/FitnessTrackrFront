@@ -1,9 +1,13 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Button } from "@mui/material";
+import { Button, AppBar, Toolbar } from "@mui/material";
 
 const styles = {
-  fontFamily: 'Roboto'
+  fontFamily: 'Roboto',
+  h1: {
+    fontFamily: 'Roboto',
+    marginRight: '25px'
+  }
 };
 
 function Nav({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
@@ -17,14 +21,15 @@ function Nav({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
   }
 
   return (
-    <nav>
-        <h1 style={styles}>Stranger's Things</h1>
+    <AppBar position='static'>
+      <Toolbar>
+        <h1 style={styles.h1}>Stranger's Things</h1>
         {isLoggedIn ? (
           <>
           {location.pathname !== '/create-post' && (
             <Button>
               <Link to='/create-post'
-              style={{color: 'inherit', textDecoration: 'none'}}>
+              style={{color: 'white', textDecoration: 'none'}}>
                 Create Post
               </Link>
             </Button>
@@ -32,13 +37,16 @@ function Nav({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
             {location.pathname !== '/' && (
               <Button>
                 <Link to='/' 
-                style={{color: 'inherit', textDecoration: 'none'}}>
+                style={{color: 'white', textDecoration: 'none'}}>
                   Go Home
                 </Link>
               </Button>
             )}
             <Button onClick={logout} variant="outlined">
-              Log Out
+                <Link to='/login' 
+                style={{color: 'white', textDecoration: 'none'}}>
+                Log Out
+                </Link>
             </Button>
           </>
         ) : null}
@@ -49,7 +57,7 @@ function Nav({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
             <p style={styles}>Already have an account?</p>
             <Button variant="outlined">
                 <Link to='/login' 
-                style={{color: 'inherit', textDecoration: 'none'}}>
+                style={{color: 'white', textDecoration: 'none'}}>
                   Login
                 </Link>
             </Button>
@@ -59,13 +67,14 @@ function Nav({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
               <>
               <p style={styles}>Don't have an account?</p>
             <Button variant="outlined">
-                <Link to='/register' style={{color: 'inherit', textDecoration: 'none'}}>Register</Link>
+                <Link to='/register' style={{color: 'white', textDecoration: 'none'}}>Register</Link>
             </Button>
             </>
             )}
           </>
-        ) : null}  
-    </nav>
+        ) : null}
+      </Toolbar>
+    </AppBar>
   );
 }
 

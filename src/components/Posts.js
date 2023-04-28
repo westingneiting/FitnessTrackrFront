@@ -1,16 +1,28 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import { Link } from 'react-router-dom';
 import { deletePost } from "../ajax-requests";
-import { Button, TextField } from '@mui/material';
+import { Button, Card, CardActions, CardContent, CardHeader, TextField, Typography } from '@mui/material';
 
 const styles = {
   fontFamily: 'Roboto',
   searchBar: {
     marginTop: '15px',
     marginBottom: '8px',
+    marginLeft: '20px',
     width: '100%',
     maxWidth: '350px',
   },
+  card: {
+    fontFamily: 'Roboto',
+    marginTop: '10px',
+    width: '90%',
+    padding: '10px',
+    marginLeft: '20px',
+  },
+  deliveryStatus: {
+    marginLeft: '10px',
+    color: '#0F9D58'
+  }
 };
 
 function Posts({ posts, isLoggedIn, token, getPosts }) {
@@ -41,38 +53,48 @@ function Posts({ posts, isLoggedIn, token, getPosts }) {
 
   return (
     <>
-    <TextField
-      label="Search posts"
-      value={searchQuery}
-      onChange={handleSearchChange}
-      style={styles.searchBar}
-      size='small'
-    />
+      <TextField
+        variant="filled"
+        label="Search posts"
+        value={searchQuery}
+        onChange={handleSearchChange}
+        style={styles.searchBar}
+        size='small'
+      />
       {filteredPosts.length === 0 ? (
-        <p style={styles}>No posts found</p>
+        <p style={styles.card}>No posts found</p>
       ) : (
         filteredPosts.map((post) => {
           return (
-            <Fragment key={post._id}>
-                <p style={styles}>{post.title}</p>
-              {isLoggedIn && post.isAuthor && (
-                <>
-                  <Button variant="outlined" onClick={() => handleDelete(post._id, token, getPosts)}>Delete</Button>
-                  <Link to={`/update-post/${post._id}`}><Button>Edit Post</Button></Link>
-                </>
-              )}
-              {isLoggedIn && !post.isAuthor && (
-                <Link to={`/send-message/${post._id}`}>
-                 <Button variant="contained">Message</Button>
-                </Link>
-              )}
-            </Fragment>
+            <Card key={post._id} style={styles.card}>
+              <CardHeader title={post.title} />
+              <CardContent style={styles.CardContent}>
+                <p style={{ marginBottom: '8px' }}>{post.description}</p>
+                <p>{post.location}</p>
+                <p>{post.willDeliver}</p>
+              </CardContent>
+              <CardActions>
+                {isLoggedIn && post.isAuthor && (
+                  <>
+                    <Button variant="outlined" onClick={() => handleDelete(post._id, token, getPosts)}>Delete</Button>
+                    <Link to={`/update-post/${post._id}`}><Button>Edit Post</Button></Link>
+                  </>
+                )}
+                {isLoggedIn && !post.isAuthor && (
+                  <Link to={`/send-message/${post._id}`}>
+                    <Button variant="contained">Message</Button>
+                  </Link>
+                )}
+                {post.willDeliver && (
+                  <Typography style={styles.deliveryStatus}>Delivery available</Typography>
+                )}
+              </CardActions>
+            </Card>
           );
         })
       )}
     </>
   );
 }
-
 
 export default Posts;

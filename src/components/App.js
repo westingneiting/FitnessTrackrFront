@@ -7,7 +7,8 @@ import {
   CreatePost,
   Nav,
   UpdatePost,
-  SendMessage
+  SendMessage,
+  Profile
 } from './';
 
 
@@ -22,8 +23,13 @@ function App() {
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [messageContent, setMessageContent] = useState('');
 
   const navigate = useNavigate();
+
+  const handleSendMessage = (content) => {
+    setMessageContent(content);
+  };
   
   function tokenCheck() {
     if (window.localStorage.getItem('token')) {
@@ -112,10 +118,22 @@ function App() {
         <Route 
         path='/send-message/:postId'
         element={<SendMessage
-        posts={posts}
-        token={token}
-        getPosts={getPosts}
-        navigate={navigate}
+          posts={posts}
+          token={token}
+          getPosts={getPosts}
+          navigate={navigate}
+          handleSend={handleSendMessage}
+        />}
+        />
+        <Route 
+        path='/profile'
+        element={<Profile
+          user={user}
+          posts={posts}
+          token={token}
+          fetchPosts={fetchPosts}
+          navigate={navigate}
+          messageContent={messageContent}
         />}
         />
       </Routes>

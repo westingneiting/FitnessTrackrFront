@@ -1,5 +1,5 @@
 const COHORT_NAME = '2301-ftb-et-web-pt';
-const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
+export const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
 
 
@@ -26,7 +26,6 @@ export const registerUser = async (user) => {
 };
 
 export const login = async (user) => {
-
   try {
     const response = await fetch(`${BASE_URL}/users/login`, {
       method: "POST",
@@ -95,7 +94,7 @@ export const makePost = async (post, token) => {
       }),
     });
     const result = await response.json();
-    // console.log(result);
+    console.log(result);
     return result
   } catch (err) {
     console.error(err);
@@ -161,4 +160,5 @@ export const postMessage = async (postId, message, token) => {
   } catch (err) {
     console.error(err);
   }
-}
+};
+

@@ -42,7 +42,15 @@ function Nav({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
                 </Link>
               </Button>
             )}
-            <Button onClick={logout} variant="outlined">
+            {location.pathname !== '/profile' && (
+              <Button>
+                <Link to='/profile' 
+                style={{color: 'white', textDecoration: 'none'}}>
+                  Profile
+                </Link>
+              </Button>
+            )}
+            <Button onClick={logout}>
                 <Link to='/login' 
                 style={{color: 'white', textDecoration: 'none'}}>
                 Log Out

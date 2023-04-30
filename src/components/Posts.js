@@ -6,22 +6,30 @@ import { Button, Card, CardActions, CardContent, CardHeader, TextField, Typograp
 const styles = {
   fontFamily: 'Roboto',
   searchBar: {
-    marginTop: '15px',
-    marginBottom: '8px',
+    marginTop: '20px',
+    marginBottom: '20px',
     marginLeft: '20px',
     width: '100%',
-    maxWidth: '350px',
+    maxWidth: '350px'
   },
   card: {
     fontFamily: 'Roboto',
     marginTop: '10px',
     width: '90%',
     padding: '10px',
-    marginLeft: '20px',
   },
   deliveryStatus: {
     marginLeft: '10px',
     color: '#0F9D58'
+  },
+  container: {
+    display: 'flex',
+    justifyContent: 'center',
+
+    flexWrap: 'wrap'
+  },
+  textfield: {
+
   }
 };
 
@@ -52,6 +60,7 @@ function Posts({ posts, isLoggedIn, token, getPosts }) {
   const filteredPosts = filterPosts(posts, searchQuery);
 
   return (
+    <div style={styles.container}>
     <>
       <TextField
         variant="filled"
@@ -94,6 +103,7 @@ function Posts({ posts, isLoggedIn, token, getPosts }) {
         })
       )}
     </>
+    </div>
   );
 }
 

@@ -7,6 +7,19 @@ const styles = {
   h1: {
     fontFamily: 'Roboto',
     marginRight: '25px'
+  },
+  link: {
+    marginLeft: '1rem',
+    color: 'white', 
+    textDecoration: 'none'
+  },
+  toolbar: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  container: {
+    display: 'flex',
+    alignItems: 'center'
   }
 };
 
@@ -22,37 +35,38 @@ function Nav({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
 
   return (
     <AppBar position='static'>
-      <Toolbar>
+      <Toolbar style={styles.toolbar}>
         <h1 style={styles.h1}>Stranger's Things</h1>
+        <div style={styles.container}>
         {isLoggedIn ? (
           <>
           {location.pathname !== '/create-post' && (
             <Button>
               <Link to='/create-post'
-              style={{color: 'white', textDecoration: 'none'}}>
+                style={styles.link}>
                 Create Post
               </Link>
             </Button>
           )}
             {location.pathname !== '/' && (
               <Button>
-                <Link to='/' 
-                style={{color: 'white', textDecoration: 'none'}}>
+                <Link to='/'
+                  style={styles.link}>
                   Go Home
                 </Link>
               </Button>
             )}
             {location.pathname !== '/profile' && (
               <Button>
-                <Link to='/profile' 
-                style={{color: 'white', textDecoration: 'none'}}>
+                <Link to='/profile'
+                  style={styles.link}>
                   Profile
                 </Link>
               </Button>
             )}
             <Button onClick={logout}>
-                <Link to='/login' 
-                style={{color: 'white', textDecoration: 'none'}}>
+                <Link to='/login'
+                style={styles.link}>
                 Log Out
                 </Link>
             </Button>
@@ -81,6 +95,7 @@ function Nav({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
             )}
           </>
         ) : null}
+        </div>
       </Toolbar>
     </AppBar>
   );

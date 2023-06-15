@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom'; //eventually we'll include Link with Routes and Route
 import { 
-  Register,
-  Posts, 
-  Login,
-  CreatePost,
-  Nav,
-  UpdatePost,
-  SendMessage,
-  Profile
+  
 } from './';
 
 
@@ -23,13 +16,8 @@ function App() {
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [messageContent, setMessageContent] = useState('');
 
   const navigate = useNavigate();
-
-  const handleSendMessage = (content) => {
-    setMessageContent(content);
-  };
   
   function tokenCheck() {
     if (window.localStorage.getItem('token')) {

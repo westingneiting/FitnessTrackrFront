@@ -1,6 +1,6 @@
 const COHORT_NAME = '2301-ftb-et-web-pt';
 export const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
-
+// export const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
 
 // USER API REQUESTS ========================================================

@@ -1,9 +1,8 @@
 const COHORT_NAME = '2301-ftb-et-web-pt';
-export const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
-// export const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
+export const BASE_URL = `https://fitnesstrac-kr.herokuapp.com/api/${COHORT_NAME}`;
 
 
-// USER API REQUESTS ========================================================
+// USER REQUESTS ========================================================
 export const registerUser = async (user) => {
   try {
     const response = await fetch(`${BASE_URL}/users/register`, {
@@ -62,7 +61,7 @@ export const myData = async (token) => {
 
 
 
-// POSTS REQUEST ROUTES ======================================================
+// ACTIVITIES REQUESTS ======================================================
 export const fetchPosts = async (token) => {
   try {
     const response = await fetch(`${BASE_URL}/posts`, {
@@ -141,7 +140,7 @@ export const deletePost = async (postId, token) => {
   }
 };
 
-// MESSAGE REQUESTS ==========================================================
+// ROUTINES REQUESTS ==========================================================
 export const postMessage = async (postId, message, token) => {
   try {
     const response = await fetch(`${BASE_URL}/posts/${postId}/messages`, {
@@ -161,4 +160,6 @@ export const postMessage = async (postId, message, token) => {
     console.error(err);
   }
 };
+
+// ROUTINE_ACTIVITIES REQUESTS ================================================
 

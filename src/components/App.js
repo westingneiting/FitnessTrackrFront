@@ -28,7 +28,7 @@ function App() {
   }
 
   async function getActivities() {
-    const results = await getAllActivities();
+    const results = await getAllActivities(token);
     if (results.success) {
       setActivities(results.data.activities)
     }

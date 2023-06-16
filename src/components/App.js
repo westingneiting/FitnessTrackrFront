@@ -4,8 +4,6 @@ import {
   Register
 } from './';
 
-
-
 import { userRoutines, myData } from '../ajax-requests';
 
 // import '@fontsource/roboto';
@@ -26,9 +24,9 @@ function App() {
   }
 
   async function getRoutines() {
-    const results = await userRoutines(token);
+    const results = await userRoutines(token, user.username);
     if (results.success) {
-      setRoutines(results.data.posts)
+      setRoutines(results.data.routines)
     }
   }
   

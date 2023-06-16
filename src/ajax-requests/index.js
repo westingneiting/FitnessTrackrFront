@@ -11,9 +11,9 @@ export const registerUser = async (user) => {
       },
       body: JSON.stringify({
         user: {
-          username,
-          password
-        }
+          username: user.username,
+          password: user.password
+        },
       }),
     });
     const result = await response.json();
@@ -143,7 +143,7 @@ export const updateActivity = async (token, {activityId, activityName, descripti
 
 export const getAllPublicRoutineActivities = async () => {
   try {
-    const response = await fetch(`${BASE_URL}/activities/3/routines`, {
+    const response = await fetch(`${BASE_URL}/activities/${activityId}/routines`, {
       headers: {
         'Content-Type': 'application/json',
       },

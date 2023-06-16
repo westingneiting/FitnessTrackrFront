@@ -1,3 +1,55 @@
+export const BASE_URL = `https://fitnesstrac-kr.herokuapp.com/api`;
+
+// User endpoints
+
+// const registerUser = async (user) => {
+//   try {
+//     const response = await fetch(`${BASE_URL}/users/register`, {
+//       method: "POST",
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify({
+//         user: {
+//           username: user.user,
+//           password: user.password
+//         }
+//       })
+//     });
+//     const result = await response.json();
+//     console.log(result);
+
+//     localStorage.setItem('fitness_tracker_JWT', json.token);
+//     return json;
+//   }
+// }
+
+// const login = async (username, password) => {
+      
+//   try {
+//     const response = await fetch(`${BASE_URL}/users/login`, {
+//       method: "POST",
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify({
+//           username,
+//           password
+//       })
+//     });
+//     const result = await response.json();
+//     console.log(result);
+//     return result
+//   } catch (err) {
+//     console.error(err);
+//   }
+// }
+
+
+
+
+
+
 // GET/activities
 
 const getAllActivities = async () => {
@@ -50,8 +102,9 @@ const updateActivity = async (token, {activityId, activityName, description}) =>
       },
       method: "PATCH",
       body: JSON.stringify({
-        name: name,
-        description: description
+        post: {
+          activityId, activityName, description
+        }
       })
     });
 
@@ -107,7 +160,7 @@ const createRoutine = async (token, { name, goal, isPublic }) => {
       body: JSON.stringify({
         name: name,
         goal: goal,
-        isPublic: true
+        isPublic: isPublic
       })
     });
     const result = await response.json();
@@ -125,11 +178,12 @@ const updateRoutine = async (token, { routineId, creatorId, isPublic, routineNam
       method: "PATCH",
       headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${TOKEN_STRING_HERE}`
+      'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({
-        name: 'Long Cardio Day',
-        goal: 'To get your heart pumping!'
+        post: {
+          routineId, creatorId, isPublic, routineName, goal
+        }
       })
     });
     const result = await response.json();
@@ -140,13 +194,14 @@ const updateRoutine = async (token, { routineId, creatorId, isPublic, routineNam
   }
 }
 
-const deleteRoutine = async () => {
+const deleteRoutine = async (token, { routineId }) => {
+  console.log(routineId)
   try {
     const response = await fetch(`${BASE_URL}/routines/6`, {
       method: "DELETE",
       headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${TOKEN_STRING_HERE}`
+      'Authorization': `Bearer ${token}`
       },
     });
     const result = await response.json();
@@ -158,17 +213,16 @@ const deleteRoutine = async () => {
 }
  
 
-const attachActivitiyToRoutine = async () => {
+const routineActivity = async (token, {activityId, count, duration}) => {
   try {
     const response = await fetch(`${BASE_URL}/routines/6/activities`, {
       method: "POST",
       headers: {
       'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({
-        activityId: 7,
-        count: 1, 
-        duration: 20
+        activityId, count, duration
       })
     });
     const result = await response.json();
@@ -181,17 +235,16 @@ const attachActivitiyToRoutine = async () => {
 
 // routine activities endpoint
 
-const updateRoutineActivities = async () => {
+const updateRoutineActivity = async (token, { activityId, routineId, count, duration}) => {
   try {
     const response = await fetch(`${BASE_URL}/routine_activities/11`, {
       method: "PATCH",
       headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${TOKEN_STRING_HERE}`
+      'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({
-        count: 2,
-        duration: 30
+        activityId, routineId, count, duration
       })
     });
     const result = await response.json();
@@ -202,12 +255,12 @@ const updateRoutineActivities = async () => {
   }
 }
 
-const deleteRoutineActivity = async () => {
+const deleteRoutineActivity = async (token) => {
   try {
     const response = await fetch(`${BASE_URL}/routine_activities/11`, {
       headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${TOKEN_STRING_HERE}`
+      'Authorization': `Bearer ${token}}`
       },
     });
     const result = await response.json();

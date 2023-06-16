@@ -2,17 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom'; //eventually we'll include Link with Routes and Route
 import { 
   Register,
-  Login
+  Login,
+  UserRoutines,
+  Activities,
+
 } from './';
 
-import { userRoutines, myData } from '../ajax-requests';
+import { myData, getAllActivities } from '../ajax-requests';
 
 // import '@fontsource/roboto';
 
 function App() {
 
   const [token, setToken] = useState('');
-  const [routines, setRoutines] = useState([]);
+  const [activities, setActivities] = useState([]);
   const [user, setUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -24,10 +27,10 @@ function App() {
     }
   }
 
-  async function getRoutines() {
-    const results = await userRoutines(token, user.username);
+  async function getActivities() {
+    const results = await getAllActivities();
     if (results.success) {
-      setRoutines(results.data.routines)
+      setActivities(results.data.activities)
     }
   }
   
@@ -43,7 +46,7 @@ function App() {
   }, [])
   
   useEffect (() => {
-   getRoutines();
+   getActivities();
    if (token) {
     getMyData();
     setIsLoggedIn(true);
@@ -56,15 +59,15 @@ function App() {
   return (
     <div>
       <Routes>
-        {/* <Route 
+        <Route 
           path='/'
-          element={<Posts 
-            posts={posts} 
+          element={<Activities 
+            activities={activities} 
             isLoggedIn={isLoggedIn} 
             token={token}
-            getPosts={getPosts}
+            getActivities={getActivities}
           />}
-        /> */}
+        />
         <Route 
           path='/register' 
           element={<Register 
@@ -78,6 +81,14 @@ function App() {
             setToken={setToken} 
             navigate={navigate} 
           />}
+        />
+        <Route 
+        path='/routines'
+        element={<UserRoutines
+          user={user}
+          token={token}
+          navigate={navigate}
+        />}
         />
         {/* <Route 
            path='/create-post'
@@ -104,17 +115,6 @@ function App() {
           getPosts={getPosts}
           navigate={navigate}
           handleSend={handleSendMessage}
-        />}
-        /> */}
-        {/* <Route 
-        path='/profile'
-        element={<Profile
-          user={user}
-          posts={posts}
-          token={token}
-          fetchPosts={fetchPosts}
-          navigate={navigate}
-          messageContent={messageContent}
         />}
         /> */}
       </Routes>

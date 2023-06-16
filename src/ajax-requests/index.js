@@ -17,7 +17,7 @@ export const registerUser = async (user) => {
       }),
     });
     const result = await response.json();
-    console.log(result);
+    // console.log(result);
     return result;
   } catch (err) {
     console.error(err);
@@ -68,7 +68,7 @@ export const userRoutines = async (username, token) => {
       },
     });
     const result = await response.json();
-    console.log(result);
+    // console.log(result);
     return result;
   } catch (err) {
     console.error(err);
@@ -87,7 +87,7 @@ export const getAllActivities = async () => {
 
     const result = await response.json();
 
-    console.log(result);
+    // console.log(result);
     return result
   } catch (err) {
     console.error(err);
@@ -111,7 +111,7 @@ export const createActivity = async (token, name, description) => {
 
     const result = await response.json();
 
-    console.log(result);
+    // console.log(result);
     return result
   } catch (err) {
     console.error(err);
@@ -134,7 +134,7 @@ export const updateActivity = async (token, {activityId, activityName, descripti
     });
 
       const result = await response.json();
-      console.log(result);
+      // console.log(result);
       return result
     } catch (err) {
     console.error(err);
@@ -149,7 +149,7 @@ export const getAllPublicRoutineActivities = async () => {
       },
     });
     const result = await response.json();
-    console.log(result);
+    // console.log(result);
     return result
   } catch (err) {
     console.error(err);
@@ -166,7 +166,7 @@ export const getAllRoutines = async () => {
   });
   
   const result = await response.json();
-  console.log(result);
+  // console.log(result);
   return result
   } catch (err) {
   console.error(err);
@@ -188,7 +188,7 @@ export const getAllRoutines = async () => {
       })
     });
     const result = await response.json();
-    console.log(result);
+    // console.log(result);
     return result
   } catch (err) {
     console.error(err);
@@ -211,7 +211,7 @@ export const updateRoutine = async (token, { routineId, creatorId, isPublic, rou
       })
     });
     const result = await response.json();
-    console.log(result);
+    // console.log(result);
     return result
   } catch (err) {
     console.error(err);
@@ -229,7 +229,7 @@ export const deleteRoutine = async (token, { routineId }) => {
       },
     });
     const result = await response.json();
-    console.log(result);
+    // console.log(result);
     return result
   } catch (err) {
     console.error(err);
@@ -250,7 +250,7 @@ export const routineActivity = async (token, {activityId, count, duration}) => {
       })
     });
     const result = await response.json();
-    console.log(result);
+    // console.log(result);
     return result
   } catch (err) {
     console.error(err);
@@ -260,9 +260,9 @@ export const routineActivity = async (token, {activityId, count, duration}) => {
 
 
 // ROUTINE_ACTIVITIES REQUESTS ================================================
-export const updateRoutineActivity = async (token, { activityId, routineId, count, duration}) => {
+export const updateRoutineActivity = async (token, { routineActivityId, activityId, routineId, count, duration}) => {
   try {
-    const response = await fetch(`${BASE_URL}/routine_activities/11`, {
+    const response = await fetch(`${BASE_URL}/routine_activities/${routineActivityId}`, {
       method: "PATCH",
       headers: {
       'Content-Type': 'application/json',
@@ -273,23 +273,23 @@ export const updateRoutineActivity = async (token, { activityId, routineId, coun
       })
     });
     const result = await response.json();
-    console.log(result);
+    // console.log(result);
     return result
   } catch (err) {
     console.error(err);
   }
 }
 
-export const deleteRoutineActivity = async (token) => {
+export const deleteRoutineActivity = async ( routineActivityId, token ) => {
   try {
-    const response = await fetch(`${BASE_URL}/routine_activities/11`, {
+    const response = await fetch(`${BASE_URL}/routine_activities/${routineActivityId}`, {
       headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}}`
       },
     });
     const result = await response.json();
-    console.log(result);
+    // console.log(result);
     return result
   } catch (err) {
     console.error(err);

@@ -17,6 +17,7 @@ function Login({ setToken, navigate }) {
       navigate('/');
     }
   }
+  
   return (
     <div>
       <h1>Login</h1>

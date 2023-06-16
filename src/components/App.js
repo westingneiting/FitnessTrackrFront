@@ -13,7 +13,7 @@ import { userRoutines, myData } from '../ajax-requests';
 function App() {
 
   const [token, setToken] = useState('');
-  const [posts, setPosts] = useState([]);
+  const [routines, setRoutines] = useState([]);
   const [user, setUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -25,10 +25,10 @@ function App() {
     }
   }
 
-  async function getPosts() {
-    const results = await getAllActivities(token);
+  async function getRoutines() {
+    const results = await userRoutines(token);
     if (results.success) {
-      setPosts(results.data.posts)
+      setRoutines(results.data.posts)
     }
   }
   
@@ -44,7 +44,7 @@ function App() {
   }, [])
   
   useEffect (() => {
-   getPosts();
+   getRoutines();
    if (token) {
     getMyData();
     setIsLoggedIn(true);

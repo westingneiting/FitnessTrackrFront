@@ -6,7 +6,7 @@ import {
 
 
 
-import { fetchPosts, myData } from '../ajax-requests';
+import { userRoutines, myData } from '../ajax-requests';
 
 // import '@fontsource/roboto';
 

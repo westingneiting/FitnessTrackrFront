@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom'; //eventually we'll include Link with Routes and Route
 import { 
-  
+  Register
 } from './';
 
 
 
 import { fetchPosts, myData } from '../ajax-requests';
 
-import '@fontsource/roboto';
+// import '@fontsource/roboto';
 
 function App() {
 
@@ -56,12 +56,6 @@ function App() {
   
   return (
     <div>
-      <Nav 
-      setToken={setToken}
-      setIsLoggedIn={setIsLoggedIn}
-      isLoggedIn={isLoggedIn}
-      navigate={navigate}
-      />
       <Routes>
         <Route 
           path='/'

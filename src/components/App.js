@@ -26,7 +26,7 @@ function App() {
   }
 
   async function getPosts() {
-    const results = await fetchPosts(token);
+    const results = await getAllActivities(token);
     if (results.success) {
       setPosts(results.data.posts)
     }
@@ -57,7 +57,7 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route 
+        {/* <Route 
           path='/'
           element={<Posts 
             posts={posts} 
@@ -65,7 +65,7 @@ function App() {
             token={token}
             getPosts={getPosts}
           />}
-        />
+        /> */}
         <Route 
           path='/register' 
           element={<Register 
@@ -73,7 +73,7 @@ function App() {
             navigate={navigate}
           />}
         />
-        <Route 
+        {/* <Route 
           path='/login'
           element={<Login 
             setToken={setToken} 
@@ -117,7 +117,7 @@ function App() {
           navigate={navigate}
           messageContent={messageContent}
         />}
-        />
+        /> */}
       </Routes>
     </div>
   );

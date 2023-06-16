@@ -10,10 +10,8 @@ export const registerUser = async (user) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        user: {
           username: user.username,
           password: user.password
-        },
       }),
     });
     console.log(response);
@@ -33,11 +31,12 @@ export const login = async (user) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        user
+          username: user.username,
+          password: user.password
       }),
     });
     const result = await response.json();
-    // console.log(result);
+    console.log(result);
     return result
   } catch (err) {
     console.error(err);
@@ -222,7 +221,7 @@ export const updateRoutine = async (token, { routineId, creatorId, isPublic, rou
 export const deleteRoutine = async (token, { routineId }) => {
   console.log(routineId)
   try {
-    const response = await fetch(`${BASE_URL}/routines/6`, {
+    const response = await fetch(`${BASE_URL}/routines/${routineId}`, {
       method: "DELETE",
       headers: {
       'Content-Type': 'application/json',
@@ -240,7 +239,7 @@ export const deleteRoutine = async (token, { routineId }) => {
 
 export const routineActivity = async (token, {activityId, count, duration}) => {
   try {
-    const response = await fetch(`${BASE_URL}/routines/6/activities`, {
+    const response = await fetch(`${BASE_URL}/routines/${activityId}/activities`, {
       method: "POST",
       headers: {
       'Content-Type': 'application/json',

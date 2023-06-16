@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom'; //eventually we'll include Link with Routes and Route
 import { 
-  Register
+  Register,
+  Login
 } from './';
 
 import { userRoutines, myData } from '../ajax-requests';
@@ -71,22 +72,22 @@ function App() {
             navigate={navigate}
           />}
         />
-        {/* <Route 
+        <Route 
           path='/login'
           element={<Login 
             setToken={setToken} 
             navigate={navigate} 
           />}
         />
-        <Route 
+        {/* <Route 
            path='/create-post'
            element={<CreatePost 
             token={token} 
             getPosts={getPosts}
             navigate={navigate}
           />}
-        />
-        <Route 
+        /> */}
+        {/* <Route 
           path='/update-post/:postId'
           element={<UpdatePost 
             posts={posts} 
@@ -94,8 +95,8 @@ function App() {
             getPosts={getPosts}
             navigate={navigate}
           />}
-        />
-        <Route 
+        /> */}
+        {/* <Route 
         path='/send-message/:postId'
         element={<SendMessage
           posts={posts}
@@ -104,8 +105,8 @@ function App() {
           navigate={navigate}
           handleSend={handleSendMessage}
         />}
-        />
-        <Route 
+        /> */}
+        {/* <Route 
         path='/profile'
         element={<Profile
           user={user}

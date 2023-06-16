@@ -27,8 +27,8 @@ const createActivity = async (token, name, description) => {
         'authorization': `Bearer ${token}`
       },
       body: JSON.stringify({
-        name: 'Running',
-        description: 'Keep on running!'
+        name: name,
+        description: description
       }) 
     });
 
@@ -50,8 +50,8 @@ const updateActivity = async (token, {activityId, activityName, description}) =>
       },
       method: "PATCH",
       body: JSON.stringify({
-        name: 'Running',
-        description: 'Keep on running, til you drop!'
+        name: name,
+        description: description
       })
     });
 
@@ -96,17 +96,17 @@ const getAllRoutines = async () => {
   }
   }
 
-const createRoutine = async () => {
+const createRoutine = async (token, { name, goal, isPublic }) => {
   try {
     const response = await fetch(`${BASE_URL}/routines`, {
       method: "POST",
       headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${TOKEN_STRING_HERE}`
+      'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({
-        name: 'Long Cardio Routine',
-        goal: 'To get your heart pumping!',
+        name: name,
+        goal: goal,
         isPublic: true
       })
     });
@@ -119,7 +119,7 @@ const createRoutine = async () => {
 }
 
 
-const updateRoutine = async () => {
+const updateRoutine = async (token, { routineId, creatorId, isPublic, routineName, goal}) => {
   try {
     const response = await fetch(`${BASE_URL}/routines/6`, {
       method: "PATCH",

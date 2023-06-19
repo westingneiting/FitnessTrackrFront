@@ -237,6 +237,9 @@ export const deleteRoutine = async (token, { routineId }) => {
 }
  
 
+// ROUTINE_ACTIVITIES REQUESTS ================================================
+
+/* Attaches actvity to a routine */
 export const routineActivity = async (token, {activityId, count, duration}) => {
   try {
     const response = await fetch(`${BASE_URL}/routines/${activityId}/activities`, {
@@ -257,9 +260,7 @@ export const routineActivity = async (token, {activityId, count, duration}) => {
   }
 }
 
-
-
-// ROUTINE_ACTIVITIES REQUESTS ================================================
+/* Updates the activities on a routine */
 export const updateRoutineActivity = async (token, { routineActivityId, activityId, routineId, count, duration}) => {
   try {
     const response = await fetch(`${BASE_URL}/routine_activities/${routineActivityId}`, {
@@ -280,6 +281,7 @@ export const updateRoutineActivity = async (token, { routineActivityId, activity
   }
 }
 
+/* Removes an activity from a routine */
 export const deleteRoutineActivity = async ( routineActivityId, token ) => {
   try {
     const response = await fetch(`${BASE_URL}/routine_activities/${routineActivityId}`, {

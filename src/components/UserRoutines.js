@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { Link } from 'react-router-dom';
-import { userRoutines, deleteRoutine } from "../ajax-requests";
+// import React, { useState } from "react";
+// import { Link } from 'react-router-dom';
+// import { userRoutines, deleteRoutine } from "../ajax-requests";
 
-function UserRoutines() {
-    return (
-        <div>
-            <h1>here lies userroutines O.o</h1>
-        </div>
-    )
-}
+// function UserRoutines() {
+//     return (
+//         <div>
+//             <h1>here lies userroutines O.o</h1>
+//         </div>
+//     )
+// }
 
-export default UserRoutines;
+// export default UserRoutines;

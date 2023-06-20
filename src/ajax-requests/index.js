@@ -141,20 +141,20 @@ export const updateActivity = async (token, {activityId, activityName, descripti
     }
 }
 
-export const getAllPublicRoutineActivities = async () => {
-  try {
-    const response = await fetch(`${BASE_URL}/activities/${activityId}/routines`, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const result = await response.json();
-    // console.log(result);
-    return result
-  } catch (err) {
-    console.error(err);
-  }
-}
+// export const getAllPublicRoutineActivities = async () => {
+//   try {
+//     const response = await fetch(`${BASE_URL}/activities/${activityId}/routines`, {
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     });
+//     const result = await response.json();
+//     // console.log(result);
+//     return result
+//   } catch (err) {
+//     console.error(err);
+//   }
+// }
 
 // ROUTINES REQUESTS ==========================================================
 export const getAllRoutines = async () => {

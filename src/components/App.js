@@ -82,14 +82,14 @@ function App() {
             navigate={navigate} 
           />}
         />
-        <Route 
-        path='/routines'
-        element={<UserRoutines
-          user={user}
-          token={token}
-          navigate={navigate}
-        />}
-        />
+        {/* // <Route 
+        // path='/routines'
+        // component={<UserRoutines
+        //   user={user}
+        //   token={token}
+        //   navigate={navigate}
+        // />}
+        // /> */}
         {/* <Route 
            path='/create-post'
            element={<CreatePost 

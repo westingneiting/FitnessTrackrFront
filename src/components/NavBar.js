@@ -9,7 +9,7 @@ const styles = {
     marginRight: '25px'
   },
   appBar: {
-    transition: "none", // Disable the background color transition
+    backgroundColor: "rgba(0, 0, 0, 0.8)", // Disable the background color transition
   },
   link: {
     marginLeft: '1rem',

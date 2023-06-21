@@ -1,16 +1,13 @@
-
-
+/* CSS exports */
 body {
-  /* background-image: url(https://4kwallpapers.com/images/wallpapers/black-dark/boxer-woman-workout-black-background-fitness-fighter-5k-8k-5683.jpg); */
+  background-image: url(https://4kwallpapers.com/images/wallpapers/black-dark/boxer-woman-workout-black-background-fitness-fighter-5k-8k-5683.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
   background-color: black;
   margin: 0;
   padding: 0;
 }
-
-header {
-  background-image: url(https://4kwallpapers.com/images/wallpapers/black-dark/boxer-woman-workout-black-background-fitness-fighter-5k-8k-5683.jpg);
-}
-
 #nav {
   display: flex;
   background: transparent;

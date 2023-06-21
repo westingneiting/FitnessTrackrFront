@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
 import { getAllRoutines } from "../ajax-requests";
+import { Card, CardContent, Typography } from '@mui/material';
+
+const styles = {
+    routinesContainer: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        minHeight: "100vh"
+    }
+}
 
 function Routines() {
   const [routines, setRoutines] = useState([]);
@@ -12,17 +21,19 @@ function Routines() {
     }
     fetchRoutines();
   }, []);
-
+  
   return (
     <div>
       <h2>Routines</h2>
-      <ul>
-        {routines.map((routine) => (
-          <li key={routine.id}>
-            <Link to={`/routines/${routine.id}`}>{routine.name}</Link>
-          </li>
-        ))}
-      </ul>
+      {routines.map((routine) => (
+        <Card key={routine.id} style={styles.routinesContainer}>
+          <CardContent>
+            <Typography variant="h5" component="h2">
+                {routine.name}
+            </Typography>
+          </CardContent>
+        </Card>
+      ))}
     </div>
   )
 }

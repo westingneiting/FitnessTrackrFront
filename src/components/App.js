@@ -3,7 +3,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom'; //eventually we'l
 import { 
   Register,
   Login,
-  UserRoutines,
+  Routines,
   Activities,
 
 } from './';
@@ -60,7 +60,7 @@ function App() {
     <div>
       <Routes>
         <Route 
-          path='/'
+          path='/activities'
           element={<Activities 
             activities={activities} 
             isLoggedIn={isLoggedIn} 
@@ -82,14 +82,14 @@ function App() {
             navigate={navigate} 
           />}
         />
-        {/* // <Route 
-        // path='/routines'
-        // component={<UserRoutines
-        //   user={user}
-        //   token={token}
-        //   navigate={navigate}
-        // />}
-        // /> */}
+        <Route 
+          path='/routines'
+          element={<Routines
+            user={user}
+            token={token}
+            navigate={navigate}
+          />}
+        />
         {/* <Route 
            path='/create-post'
            element={<CreatePost 

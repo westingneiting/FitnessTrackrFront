@@ -6,24 +6,16 @@ function Activities() {
     const [activities, setActivities] = useState([]);
 
     useEffect(() => {
-        fetchActivities();
-    }, []);
-
-    async function fetchActivities() {
-        try {
-            const response = await getAllActivities();
-            if (response.success) {
-                setActivities(response.data.activities);
-            }
-        } catch (error) {
-            console.error(error);
+        async function fetchActivities() {
+          const result = await getAllActivities();
+          setActivities(result);
         }
-    }
+        fetchActivities();
+      }, []);
 
     return (
         <div>
-            <h1>Main Page</h1>
-            <h2>here lies activities O.o</h2>
+            <h2>Activities</h2>
             <ul>
                 {activities.map((activity) => (
                     <li key={activity.id}>

@@ -6,17 +6,24 @@ function Routines() {
   const [routines, setRoutines] = useState([]);
 
   useEffect(() => {
-    async function AllRoutines() {
+    async function fetchRoutines() {
       const result = await getAllRoutines();
       setRoutines(result);
     }
-    AllRoutines();
+    fetchRoutines();
   }, []);
 
   return (
-      <div>
-          <h2>Routines</h2>
-      </div>
+    <div>
+      <h2>Routines</h2>
+      <ul>
+        {routines.map((routine) => (
+          <li key={routine.id}>
+            <Link to={`/routines/${routine.id}`}>{routine.name}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 

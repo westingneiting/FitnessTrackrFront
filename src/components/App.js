@@ -3,6 +3,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom'; //eventually we'l
 import { 
   Register,
   Login,
+  Home,
   Routines,
   Activities,
 
@@ -59,6 +60,11 @@ function App() {
   return (
     <div>
       <Routes>
+        <Route 
+          path='/'
+          element={<Home
+          />}
+        />
         <Route 
           path='/activities'
           element={<Activities 

@@ -2,15 +2,8 @@ import React, { useState, useEffect } from "react";
 import { getAllRoutines } from "../ajax-requests";
 import { Card, CardContent, Typography } from '@mui/material';
 import Home from './Home'
+import '../style.css'
 
-const styles = {
-    routinesContainer: {
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        minHeight: "100vh"
-    }
-}
 
 function Routines() {
   const [routines, setRoutines] = useState([]);
@@ -29,7 +22,17 @@ function Routines() {
       <h2>Routines</h2>
       {Home}
       {routines.map((routine) => (
-        <Card key={routine.id} style={styles.routinesContainer}>
+        <Card key={routine.id} style={
+          {display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
+          width: '60%',
+          height: 'auto',
+          backgroundColor: 'white',
+          border: 'double 8px black',
+          boxShadow: '0 0 5px black',
+          margin: '10px',
+        }}>
           <CardContent>
             <Typography variant="h5" component="h2">
                 {routine.name}

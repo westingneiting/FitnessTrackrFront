@@ -5,8 +5,8 @@ export { default as Routines } from './Routines';
 export { default as Activities } from './Activities';
 export { default as Home } from './Home';
 export { default as CreateRoutine } from './CreateRoutine';
-export {default as NavBar} from './NavBar';
-export {default as Footer} from './Footer';
+export { default as NavBar } from './NavBar';
+export { default as Footer } from './Footer';
 
 
 // export { default as UpdateRoutine } from './Routines/UpdateRoutine';

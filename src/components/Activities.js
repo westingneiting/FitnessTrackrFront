@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllActivities } from "../ajax-requests";
 import { Card, CardContent, Typography, TextField } from '@mui/material';
+import '../style.css'
 
 function Activities() {
   const [activities, setActivities] = useState([]);
@@ -39,7 +40,17 @@ function Activities() {
         <p>No activities found</p>
       ) : (
         filteredActivities.map((activity) => (
-          <Card key={activity.id} style={{ marginBottom: '1rem' }}>
+          <Card key={activity.id} style={
+            {display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+            width: '60%',
+            height: 'auto',
+            backgroundColor: 'white',
+            border: 'double 8px black',
+            boxShadow: '0 0 5px black',
+            margin: '10px',
+          }}>
             <CardContent>
               <Typography variant="h5" component="h2">
                 {activity.name}

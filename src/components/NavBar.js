@@ -4,10 +4,8 @@ import { Link } from "react-router-dom";
 const Navbar = ({ user, setToken, setUser }) => {
     return (
       <>
-        {/* <section className="heroimage"> */}
           <div id="nav">
-            <h1>Fitness Tracker</h1>
-  
+            <h1 classname="title">Fitness Tracker</h1>
             <div id="links">
               <Link to="/" className="link">
                 Hello
@@ -23,7 +21,6 @@ const Navbar = ({ user, setToken, setUser }) => {
               </Link>
             </div>
           </div>
-        {/* </section> */}
       </>
     );
   };

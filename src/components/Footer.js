@@ -19,15 +19,15 @@ const styles = {
         
     },
     container: {
-        paddingTop: "15px"
+        paddingTop: "8px"
     
     
     },
     button: {
         backgroundColor: "white",
         textDecoration: "none",
-        paddingBottom: "5px",
-        fontSize: "16px",
+        padding: "6px",
+        fontSize: "15px",
         fontWeight: "900",
         color: "black",
         borderRadius: '25px',

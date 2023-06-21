@@ -11,9 +11,19 @@ header {
   background-image: url(https://4kwallpapers.com/images/wallpapers/black-dark/boxer-woman-workout-black-background-fitness-fighter-5k-8k-5683.jpg);
 }
 
+h1 {
+  display: flex;
+  justify-content: left;
+  font-family: "Megrim";
+  font-size: 65px;
+  color: white;
+  text-shadow: 0 0 20px red;
+  padding-left: 15px;
+}
+
 #nav {
   display: flex;
-  background: transparent;
+  background: black;
   height: 105px;
   justify-content: space-between;
   align-items: center;
@@ -33,15 +43,15 @@ header {
 }
 .link {
   font-family: "Wire One";
-  font-size: 45px;
-  color: white;
   text-decoration: none;
+  font-size: 40px;
+  color: white;
   padding-right: 40px;
 }
 .link:hover {
-  color: #984950;
-  text-shadow: 0 0 5px red;
-  text-decoration: underline 2px aqua;
+  color: white;
+  text-shadow: 0 0 12px red;
+  text-decoration: none;
 }
 
 .heroimage {

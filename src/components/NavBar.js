@@ -1,32 +1,107 @@
-import React from 'react';
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Button, AppBar, Toolbar } from "@mui/material";
 
-const Navbar = ({ user, setToken, setUser }) => {
-    return (
-      <>
-        {/* <section className="heroimage"> */}
-          <div id="nav">
-            <h1>Fitness Tracker</h1>
-  
-            <div id="links">
-              <Link to="/" className="link">
-                Hello
+const styles = {
+  fontFamily: 'Roboto',
+  h1: {
+    fontFamily: 'Roboto',
+    marginRight: '25px'
+  },
+  appBar: {
+    transition: "none", // Disable the background color transition
+  },
+  link: {
+    marginLeft: '1rem',
+    color: 'white', 
+    textDecoration: 'none'
+  },
+  toolbar: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
+  container: {
+    display: 'flex',
+    alignItems: 'center'
+  }
+};
+
+function NavBar({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
+  const location = useLocation();
+
+  function logout() {
+    setToken('');
+    setIsLoggedIn(false);
+    window.localStorage.removeItem('token');
+    navigate('/login');
+  }
+
+  return (
+    <AppBar position='static' style={styles.appBar}>
+      <Toolbar style={styles.toolbar}>
+        <h1 style={styles.h1}>Fitness Trackr</h1>
+        <div style={styles.container}>
+        {isLoggedIn ? (
+          <>
+          {location.pathname !== '/routines' && (
+            <Button>
+              <Link to='/create-post'
+                style={styles.link}>
+                Create Post
               </Link>
-              <Link to="/Routines" className="link">
-                Routines
+            </Button>
+          )}
+            {location.pathname !== '/activities' && (
+              <Button>
+                <Link to='/profile'
+                  style={styles.link}>
+                  Profile
+                </Link>
+              </Button>
+            )}
+            <Button onClick={logout}>
+                <Link to='/login'
+                style={styles.link}>
+                Log Out
+                </Link>
+            </Button>
+          </>
+        ) : null}
+        {!isLoggedIn ? (
+          <>
+          {location.pathname !== '/' && (
+            <Button variant='outlined'>
+              <Link to='/'
+                style={{color: 'white', textDecoration: 'none'}}>
+                Home
               </Link>
-              <Link to="/Activities" className="link">
-                Activities
-              </Link>
-              <Link to="/Login" className="link">
-                Login/Register
-              </Link>
-            </div>
-          </div>
-        {/* </section> */}
-      </>
-    );
-  };
-  
-  export default Navbar;
-  
+            </Button>
+          )}
+          {location.pathname !== '/login' && (
+            <>
+            <p style={styles}>Already have an account?</p>
+            <Button variant="outlined">
+                <Link to='/login' 
+                style={{color: 'white', textDecoration: 'none'}}>
+                  Login
+                </Link>
+            </Button>
+            </>
+            )}
+            {location.pathname !== '/register' && (
+              <>
+              <p style={styles}>Don't have an account?</p>
+            <Button variant="outlined">
+                <Link to='/register' style={{color: 'white', textDecoration: 'none'}}>Register</Link>
+            </Button>
+            </>
+            )}
+          </>
+        ) : null}
+        </div>
+      </Toolbar>
+    </AppBar>
+  );
+}
+ 
+export default NavBar;

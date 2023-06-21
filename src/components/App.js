@@ -8,11 +8,10 @@ import {
   Activities,
   NavBar,
 
-} from './components';
-import './style.css'
-import { Paper } from "@mui/material";
+} from '.';
+import '../style.css'
 
-import { myData, getAllActivities } from './ajax-requests';
+import { myData, getAllActivities } from '../ajax-requests';
 
 // import '@fontsource/roboto';
 
@@ -61,9 +60,13 @@ function App() {
   // use this ^^ console log as you build useeffects e.g. console.log(posts)
   
   return (
-    <Paper>
     <div>
-    <NavBar />
+      <NavBar
+        setToken={setToken}
+        setIsLoggedIn={setIsLoggedIn}
+        isLoggedIn={isLoggedIn}
+        navigate={navigate}
+      />
       <Routes>
         <Route 
           path='/'
@@ -130,7 +133,6 @@ function App() {
         /> */}
       </Routes>
     </div>
-    </Paper>
   );
 }
 

@@ -6,10 +6,13 @@ import {
   Home,
   Routines,
   Activities,
+  NavBar,
 
-} from './';
+} from './components';
+import './style.css'
+import { Paper } from "@mui/material";
 
-import { myData, getAllActivities } from '../ajax-requests';
+import { myData, getAllActivities } from './ajax-requests';
 
 // import '@fontsource/roboto';
 
@@ -58,7 +61,9 @@ function App() {
   // use this ^^ console log as you build useeffects e.g. console.log(posts)
   
   return (
+    <Paper>
     <div>
+    <NavBar />
       <Routes>
         <Route 
           path='/'
@@ -125,6 +130,7 @@ function App() {
         /> */}
       </Routes>
     </div>
+    </Paper>
   );
 }
 

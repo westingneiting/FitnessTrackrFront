@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAllRoutines } from "../ajax-requests";
 import { Card, CardContent, Typography } from '@mui/material';
+import Home from './Home'
 
 const styles = {
     routinesContainer: {
@@ -23,8 +24,10 @@ function Routines() {
   }, []);
   
   return (
+  
     <div>
       <h2>Routines</h2>
+      {Home}
       {routines.map((routine) => (
         <Card key={routine.id} style={styles.routinesContainer}>
           <CardContent>

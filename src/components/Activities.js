@@ -16,14 +16,12 @@ function Activities() {
 
   return (
     <div>
-      <h2>Activities</h2>
+      <Typography variant="h2" component="h2">Activities</Typography>
       {activities.map((activity) => (
         <Card key={activity.id}>
           <CardContent>
             <Typography variant="h5" component="h2">
-              <Link to={`/activities/${activity.id}`}>
                 {activity.name}
-              </Link>
             </Typography>
           </CardContent>
         </Card>

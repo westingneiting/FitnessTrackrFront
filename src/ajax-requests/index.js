@@ -240,7 +240,7 @@ export const deleteRoutine = async (token, { routineId }) => {
 // ROUTINE_ACTIVITIES REQUESTS ================================================
 
 /* Attaches actvity to a routine */
-export const routineActivity = async (token, {activityId, count, duration}) => {
+export const routineActivity = async (token, activityId, { count, duration }) => {
   try {
     const response = await fetch(`${BASE_URL}/routines/${activityId}/activities`, {
       method: "POST",
@@ -261,21 +261,20 @@ export const routineActivity = async (token, {activityId, count, duration}) => {
 }
 
 /* Updates the activities on a routine */
-export const updateRoutineActivity = async (token, { routineActivityId, activityId, routineId, count, duration}) => {
+export const updateRoutineActivity = async (token, routineActivityId, { count, duration }) => {
   try {
     const response = await fetch(`${BASE_URL}/routine_activities/${routineActivityId}`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify({
-        activityId, routineId, count, duration
-      })
+      body: JSON.stringify({ count, duration })
     });
+
     const result = await response.json();
     // console.log(result);
-    return result
+    return result;
   } catch (err) {
     console.error(err);
   }
@@ -285,6 +284,7 @@ export const updateRoutineActivity = async (token, { routineActivityId, activity
 export const deleteRoutineActivity = async ( routineActivityId, token ) => {
   try {
     const response = await fetch(`${BASE_URL}/routine_activities/${routineActivityId}`, {
+      method: 'DELETE',
       headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}}`

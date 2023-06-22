@@ -47,14 +47,14 @@ function Routines() {
       <div style={styles.container}>
         <TextField
           variant="filled"
-          label="Search activities"
+          label="Search routines"
           value={searchQuery}
           onChange={handleSearchChange}
-          style={{ backgroundColor: 'white',marginBottom: '1rem', marginLeft: '1%' }}
+          style={{ backgroundColor: 'white', marginBottom: '1rem', marginLeft: '1%' }}
           size='small'
         />
-        <Button variant="outlined" style={{background: 'white', marginLeft: '1%'}}>
-                <Link to={CreateRoutine}>
+        <Button variant="outlined" style={{background: 'transparent', marginLeft: '1%'}}>
+                <Link to={CreateRoutine} style={{textDecoration: 'none', color: 'white'}}>
                 Create New Routine
                 </Link>
               </Button>

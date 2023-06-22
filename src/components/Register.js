@@ -8,6 +8,7 @@ const styles = {
     marginTop: '10px',
     width: '30%',
     padding: '10px',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)'
   },
   box: {
     display: 'flex',
@@ -21,7 +22,13 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     height: '50vh',
-  }
+  },
+  h2: {
+    color: 'white'
+  },
+  textField: {
+    backgroundColor: 'rgba(255, 255, 255, 0.8)', // Adjust the color and transparency here
+  },
 };
 
 function Register({ setToken, navigate }) {
@@ -46,7 +53,7 @@ function Register({ setToken, navigate }) {
     <div style={styles.container}>
       <Card style={styles.card}>
         <CardContent>
-          <h2>Register</h2>
+          <h2 style={styles.h2}>Register</h2>
           <form onSubmit={handleSubmit}>
             <Box style={styles.box}>
               <TextField 
@@ -55,6 +62,7 @@ function Register({ setToken, navigate }) {
                 value={username}
                 onChange={(event) => {setUsername(event.target.value)}}
                 required
+                style={styles.textField}
               />
               <TextField 
                 label='Enter Password'
@@ -63,8 +71,9 @@ function Register({ setToken, navigate }) {
                 onChange={(event) => {setPassword(event.target.value)}}
                 type='password'
                 required
+                style={styles.textField}
               />
-              <Button type='submit' variant="contained">Submit</Button>
+              <Button type='submit' variant="outlined">Submit</Button>
             </Box>
           </form>
         </CardContent>

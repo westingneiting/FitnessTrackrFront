@@ -1,12 +1,11 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Button, AppBar, Toolbar, Typography } from "@mui/material";
 import { Button, AppBar, Toolbar } from "@mui/material";
 import '../style.css'
 
 const styles = {
-  fontFamily: 'Roboto',
   h1: {
-    fontFamily: 'Roboto',
     marginRight: '25px'
   },
   appBar: {

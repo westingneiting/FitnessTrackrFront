@@ -45,6 +45,7 @@ function Register({ setToken, navigate }) {
       setToken(results.data.token);
       window.localStorage.setItem("token", results.data.token);
       navigate("/login");
+      console.log("Navigating to /login");
   
       setUsername("");
       setPassword("");

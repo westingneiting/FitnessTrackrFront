@@ -14,7 +14,6 @@ export const registerUser = async (user) => {
           password: user.password
       }),
     });
-    console.log(response);
     const result = await response.json();
     console.log(result);
     return result;

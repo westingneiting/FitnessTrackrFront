@@ -8,10 +8,10 @@ import {
   Activities,
   NavBar,
 
-} from '.';
+} from './';
 import '../style.css'
 
-import { myData, getAllRoutines } from '../ajax-requests';
+import { myData } from '../ajax-requests';
 
 function App() {
 
@@ -91,19 +91,17 @@ function App() {
           />}
         />
         {/* <Route 
-           path='/create-post'
-           element={<CreatePost 
+           path='/create-routine'
+           element={<CreateRoutine
             token={token} 
-            getPosts={getPosts}
             navigate={navigate}
           />}
         /> */}
         {/* <Route 
-          path='/update-post/:postId'
-          element={<UpdatePost 
-            posts={posts} 
+          path='/update-routine/:routineId'
+          element={<UpdateRoutine
+            routine={routines} 
             token={token}
-            getPosts={getPosts}
             navigate={navigate}
           />}
         /> */}

@@ -8,7 +8,7 @@ const styles = {
     marginRight: "auto",
   },
   appBar: {
-    backgroundColor: "rgba(100, 100, 100, 0.15)",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   link: {
     color: "white",

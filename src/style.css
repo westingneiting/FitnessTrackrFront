@@ -2,7 +2,7 @@
 
 /* CSS exports */
 body {
-  /* background-image: url(https://4kwallpapers.com/images/wallpapers/black-dark/boxer-woman-workout-black-background-fitness-fighter-5k-8k-5683.jpg); */
+  background-image: url(https://4kwallpapers.com/images/wallpapers/black-dark/boxer-woman-workout-black-background-fitness-fighter-5k-8k-5683.jpg);
   background-color: black;
   margin: 0;
   padding: 0;
@@ -10,10 +10,6 @@ body {
 
 .heroimage {
   min-Height: 90vh;
-  background-Image: url(https://4kwallpapers.com/images/wallpapers/black-dark/boxer-woman-workout-black-background-fitness-fighter-5k-8k-5683.jpg);
+  background-image: url(https://4kwallpapers.com/images/wallpapers/black-dark/boxer-woman-workout-black-background-fitness-fighter-5k-8k-5683.jpg);
   background-size: cover;
-}
-
-h2 {
-  
 }

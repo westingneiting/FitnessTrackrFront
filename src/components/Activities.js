@@ -3,6 +3,20 @@ import { getAllActivities } from "../ajax-requests";
 import { Card, CardContent, Typography, TextField } from '@mui/material';
 import '../style.css'
 
+const styles = {
+  h2: {
+    margin: "25px",
+    color: 'white'
+  },
+  container: {
+    display: "flex",
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    textAlign: 'center',
+  }
+}
+
 function Activities() {
   const [activities, setActivities] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -27,39 +41,41 @@ function Activities() {
 
   return (
     <div>
-      <Typography variant="h2" component="h2" style={{color: 'white', marginLeft: '1%'}}>Activities</Typography>
-      <TextField
-        
-        variant="filled"
-        label="Search activities"
-        value={searchQuery}
-        onChange={handleSearchChange}
-        style={{ backgroundColor: 'white',marginBottom: '1rem', marginLeft: '1%' }}
-        size='small'
-      />
-      {filteredActivities.length === 0 ? (
-        <p style={{color: 'white', marginLeft: '1%'}}>No activities found</p>
-      ) : (
-        filteredActivities.map((activity) => (
-          <Card key={activity.id} style={
-            {display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-start',
-            width: '60%',
-            height: 'auto',
-            backgroundColor: 'white',
-            border: 'double 8px black',
-            boxShadow: '0 0 5px black',
-            margin: '10px',
-          }}>
-            <CardContent>
-              <Typography variant="h5" component="h2">
-                {activity.name}
-              </Typography>
-            </CardContent>
-          </Card>
-        ))
-      )}
+        <Typography variant="h2" style={styles.h2}>Activities</Typography>
+      <div style={styles.container}>
+        <TextField
+          
+          variant="filled"
+          label="Search activities"
+          value={searchQuery}
+          onChange={handleSearchChange}
+          style={{ backgroundColor: 'white',marginBottom: '1rem', marginLeft: '1%' }}
+          size='small'
+        />
+        {filteredActivities.length === 0 ? (
+          <p style={{color: 'white', marginLeft: '1%'}}>No activities found</p>
+        ) : (
+          filteredActivities.map((activity) => (
+            <Card key={activity.id} style={
+              {display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'flex-start',
+              width: '60%',
+              height: 'auto',
+              backgroundColor: 'white',
+              border: 'double 8px black',
+              boxShadow: '0 0 5px black',
+              margin: '10px',
+            }}>
+              <CardContent>
+                <Typography variant="h5" component="h2">
+                  {activity.name}
+                </Typography>
+              </CardContent>
+            </Card>
+          ))
+        )}
+      </div>
     </div>
   )
 }

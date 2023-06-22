@@ -17,20 +17,20 @@ const styles = {
   container: {
     position: "relative",
     background: 'transparent',
-},
-textContainer: {
-    display: "flex",
-    justifyContent: "left",
-    marginLeft: "8%"
-},
-text: {
-    position: "absolute",
-    textAlign: "center",
-    fontSize: "70px",
-    fontWeight: "900",
-    color: "white",
-    marginTop: "15%",
-},
+  },
+  textContainer: {
+      display: "flex",
+      justifyContent: "left",
+      marginLeft: "8%"
+  },
+  text: {
+      position: "absolute",
+      textAlign: "center",
+      fontSize: "70px",
+      fontWeight: "900",
+      color: "white",
+      marginTop: "15%",
+  },
 }
 
 import "../style.css";
@@ -45,8 +45,8 @@ function Home() {
                     <Typography variant='h2'>
                         Welcome to FitnessTracker
                     </Typography>
-                    <Typography variant='h5'>
-                      Please login to view workouts!
+                    <Typography variant='h6'>
+                      Please login to make your own workouts!
                     </Typography>
                 </div>
             </div>

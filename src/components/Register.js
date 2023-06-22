@@ -27,7 +27,7 @@ const styles = {
     color: 'white'
   },
   textField: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)', // Adjust the color and transparency here
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
   },
 };
 
@@ -37,16 +37,18 @@ function Register({ setToken, navigate }) {
   
   async function handleSubmit(event) {
     event.preventDefault();
-    const user = {username, password};
-   
+    const user = { username, password };
+  
     const results = await registerUser(user);
-    
+  
     if (results.success) {
       setToken(results.data.token);
       window.localStorage.setItem("token", results.data.token);
-      navigate('/login');
+      navigate("/login");
+  
+      setUsername("");
+      setPassword("");
     }
-    
   }
   
   return (

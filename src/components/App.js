@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom'; //eventually we'll include Link with Routes and Route
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { 
   Register,
   Login,
@@ -7,19 +7,15 @@ import {
   Routines,
   Activities,
   NavBar,
-  Footer,
 
 } from '.';
 import '../style.css'
 
-import { myData, getAllActivities } from '../ajax-requests';
-
-// import '@fontsource/roboto';
+import { myData, getAllRoutines } from '../ajax-requests';
 
 function App() {
 
   const [token, setToken] = useState('');
-  const [activities, setActivities] = useState([]);
   const [user, setUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -28,13 +24,6 @@ function App() {
   function tokenCheck() {
     if (window.localStorage.getItem('token')) {
       setToken(window.localStorage.getItem('token'));
-    }
-  }
-
-  async function getActivities() {
-    const results = await getAllActivities(token);
-    if (results.success) {
-      setActivities(results.data.activities)
     }
   }
   
@@ -50,15 +39,11 @@ function App() {
   }, [])
   
   useEffect (() => {
-   getActivities();
    if (token) {
     getMyData();
     setIsLoggedIn(true);
    }
   }, [token])
-
-  // console.log(posts);
-  // use this ^^ console log as you build useeffects e.g. console.log(posts)
   
   return (
     <div>
@@ -79,10 +64,8 @@ function App() {
         <Route 
           path='/activities'
           element={<Activities 
-            activities={activities} 
             isLoggedIn={isLoggedIn} 
             token={token}
-            getActivities={getActivities}
           />}
         />
         <Route 
@@ -123,16 +106,6 @@ function App() {
             getPosts={getPosts}
             navigate={navigate}
           />}
-        /> */}
-        {/* <Route 
-        path='/send-message/:postId'
-        element={<SendMessage
-          posts={posts}
-          token={token}
-          getPosts={getPosts}
-          navigate={navigate}
-          handleSend={handleSendMessage}
-        />}
         /> */}
       </Routes>
     </div>

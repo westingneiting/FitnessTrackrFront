@@ -27,7 +27,7 @@ const styles = {
     color: 'white'
   },
   textField: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)', // Adjust the color and transparency here
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
   },
 };
 

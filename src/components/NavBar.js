@@ -1,10 +1,10 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Button, AppBar, Toolbar } from "@mui/material";
+import { Button, AppBar, Toolbar, Typography } from "@mui/material";
 import "../style.css";
 
 const styles = {
-  h1: {
+  h4: {
     marginRight: "auto",
   },
   appBar: {
@@ -38,7 +38,9 @@ function NavBar({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
   return (
     <AppBar position="static" style={styles.appBar}>
       <Toolbar>
-        <h1 style={styles.h1}>Fitness Trackr</h1>
+        <Typography variant="h4" style={styles.h1}>
+        Fitness Trackr
+        </Typography>
         <div style={styles.container}>
           {location.pathname !== "/" && (
             <Button variant="outlined" style={styles.button}>

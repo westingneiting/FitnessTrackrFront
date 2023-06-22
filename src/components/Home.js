@@ -35,24 +35,28 @@ const styles = {
 
 import "../style.css";
 
-
-
-function Home() {
+function Home({ isLoggedIn }) {
   return (
     <Paper style={styles.container}>
-            <div style={styles.textContainer}>
-                <div style={styles.text}>
-                    <Typography variant='h2'>
-                        Welcome to FitnessTracker
-                    </Typography>
-                    <Typography variant='h6'>
-                      Please login to make your own workouts!
-                    </Typography>
-                </div>
-            </div>
-            <div className="heroimage" />
-            <Footer />
-        </Paper>
+      <div style={styles.textContainer}>
+        <div style={styles.text}>
+          <Typography variant='h2'>
+            Welcome to FitnessTracker
+          </Typography>
+          {isLoggedIn ? (
+            <Typography variant='h6' style={styles.loggedInText}>
+              You are logged in! Start creating your workouts at Routines.
+            </Typography>
+          ) : (
+            <Typography variant='h6' style={styles.loggedInText}>
+              Please Login to make your own workouts!
+            </Typography>
+          )}
+        </div>
+      </div>
+      <div className="heroimage" />
+      <Footer />
+    </Paper>
   );
 }
 

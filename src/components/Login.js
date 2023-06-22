@@ -37,13 +37,15 @@ function Login({ setToken, navigate }) {
   
   async function handleSubmit(event) {
     event.preventDefault();
-    const user = {username, password};
+    const user = { username, password };
    
     const results = await login(user);
     
     if (results.success) {
       setToken(results.data.token);
       window.localStorage.setItem("token", results.data.token);
+      setIsLoggedIn(true);
+      console.log('isloggedin:', isLoggedIn)
       navigate('/');
     }
   }

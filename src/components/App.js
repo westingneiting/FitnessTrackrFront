@@ -79,6 +79,7 @@ function App() {
           path='/login'
           element={<Login 
             setToken={setToken} 
+            setIsLoggedIn={setIsLoggedIn}
             navigate={navigate} 
           />}
         />

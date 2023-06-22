@@ -30,7 +30,7 @@ function NavBar({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
 
   function logout() {
     setToken("");
-    setIsLoggedIn(null);
+    setIsLoggedIn(false);
     window.localStorage.removeItem("token");
     navigate("/login");
   }
@@ -39,7 +39,7 @@ function NavBar({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
     <AppBar position="static" style={styles.appBar}>
       <Toolbar>
         <Typography variant="h4" style={styles.h1}>
-        Fitness Trackr
+          Fitness Trackr
         </Typography>
         <div style={styles.container}>
           {location.pathname !== "/" && (
@@ -63,16 +63,7 @@ function NavBar({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
               </Link>
             </Button>
           )}
-          {isLoggedIn ? (
-            <>
-              <Button onClick={logout} style={styles.button}>
-                <Link to="/login" style={styles.link}>
-                  Log Out
-                </Link>
-              </Button>
-            </>
-          ) : null}
-          {!isLoggedIn ? (
+          {!isLoggedIn && (
             <>
               {location.pathname !== "/login" && (
                 <Button variant="outlined" style={styles.button}>
@@ -89,11 +80,19 @@ function NavBar({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
                 </Button>
               )}
             </>
-          ) : null}
+          )}
+          {isLoggedIn && (
+            <Button onClick={logout} style={styles.button}>
+              <Link to="/login" style={styles.link}>
+                Log Out
+              </Link>
+            </Button>
+          )}
         </div>
       </Toolbar>
     </AppBar>
   );
+  
 }
 
 export default NavBar;

@@ -1,16 +1,18 @@
 /* CSS exports */
 body {
-  background-image: url(https://4kwallpapers.com/images/wallpapers/black-dark/boxer-woman-workout-black-background-fitness-fighter-5k-8k-5683.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
+  /* background-image: url(https://4kwallpapers.com/images/wallpapers/black-dark/boxer-woman-workout-black-background-fitness-fighter-5k-8k-5683.jpg); */
   background-color: black;
   margin: 0;
   padding: 0;
 }
+
+/* header {
+  background-image: url(https://4kwallpapers.com/images/wallpapers/black-dark/boxer-woman-workout-black-background-fitness-fighter-5k-8k-5683.jpg);
+} */
+
 #nav {
   display: flex;
-  background: transparent;
+  background: black;
   height: 105px;
   justify-content: space-between;
   align-items: center;
@@ -30,15 +32,15 @@ body {
 }
 .link {
   font-family: "Wire One";
-  font-size: 45px;
-  color: white;
   text-decoration: none;
+  font-size: 40px;
+  color: white;
   padding-right: 40px;
 }
 .link:hover {
-  color: #984950;
-  text-shadow: 0 0 5px red;
-  text-decoration: underline 2px aqua;
+  color: white;
+  text-shadow: 0 0 12px red;
+  text-decoration: none;
 }
 
 .heroimage {

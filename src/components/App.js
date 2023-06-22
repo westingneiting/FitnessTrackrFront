@@ -7,6 +7,7 @@ import {
   Routines,
   Activities,
   NavBar,
+  Footer,
 
 } from '.';
 import '../style.css'

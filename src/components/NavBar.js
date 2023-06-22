@@ -58,7 +58,7 @@ function NavBar({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
                   Routines
             </Link>
           </Button>
-          <Button variant="outlined" style={{margin: '.5%'}}>
+          <Button variant="outlined" style={{margin: '.5%', marginRight: '2%'}}>
             <Link to='/Activities'
                 style={{color: 'white', textDecoration: 'none'}}>
                   Activities
@@ -103,7 +103,7 @@ function NavBar({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
             <div style={styles.loginBtn}>
             {location.pathname !== '/login' && (
               <>
-              <p style={styles}>Already have an account?</p>
+              <p style={{margin: '5%', }}>Already a memeber?</p>
               <Button variant="outlined" style={{margin: '.5%'}}>
                   <Link to='/login' 
                   style={{color: 'white', textDecoration: 'none'}}>
@@ -115,7 +115,7 @@ function NavBar({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
               <div style={styles.rgstrBtn}>
               {location.pathname !== '/register' && (
                 <>
-                <p style={styles}>Don't have an account?</p>
+                <p style={{margin: '5%', }}>Not a member?</p>
               <Button variant="outlined" style={{margin: '.5%'}}>
                   <Link to='/register' style={{color: 'white', textDecoration: 'none'}}>Register</Link>
               </Button>

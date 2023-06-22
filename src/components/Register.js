@@ -35,20 +35,21 @@ function Register({ setToken, navigate }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   
-  async function handleSubmit(event) {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const user = { username, password };
-  
-    const results = await registerUser(user);
-  
+    const userInfo = { 
+      username: username,
+      password: password 
+    };
+  const results = await registerUser(userInfo);
+    // setToken(results.data.token);
+    // window.localStorage.setItem("token", results.data.token);
+    navigate("/login");
+    console.log("Navigating to /login");
+
+    setUsername("");
+    setPassword("");
     if (results.success) {
-      setToken(results.data.token);
-      window.localStorage.setItem("token", results.data.token);
-      navigate("/login");
-      console.log("Navigating to /login");
-  
-      setUsername("");
-      setPassword("");
     }
   }
   

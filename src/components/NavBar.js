@@ -1,10 +1,16 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Button, AppBar, Toolbar, Typography } from "@mui/material";
+import { Button, AppBar, Toolbar } from "@mui/material";
 
 const styles = {
   h1: {
     marginRight: '25px'
+  },
+  p: {
+    marginLeft: '1rem',
+    marginRight: '1rem',
+    color: 'white',
+    textDecoration: 'none',
   },
   appBar: {
     backgroundColor: "rgba(0, 0, 0, 0.8)", // Disable the background color transition
@@ -33,6 +39,7 @@ function NavBar({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
     window.localStorage.removeItem('token');
     navigate('/login');
   }
+
 
   return (
     <AppBar position='static' style={styles.appBar}>
@@ -77,7 +84,7 @@ function NavBar({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
           )}
           {location.pathname !== '/login' && (
             <>
-            <p style={styles}>Already have an account?</p>
+            <p style={styles.p}>Already have an account?</p>
             <Button variant="outlined">
                 <Link to='/login' 
                 style={{color: 'white', textDecoration: 'none'}}>
@@ -88,7 +95,7 @@ function NavBar({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
             )}
             {location.pathname !== '/register' && (
               <>
-              <p style={styles}>Don't have an account?</p>
+              <p style={styles.p}>Don't have an account?</p>
             <Button variant="outlined">
                 <Link to='/register' style={{color: 'white', textDecoration: 'none'}}>Register</Link>
             </Button>

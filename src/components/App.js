@@ -71,6 +71,8 @@ function App() {
         <Route 
           path='/'
           element={<Home
+            isLoggedIn={isLoggedIn} 
+            token={token}
           />}
         />
         <Route 

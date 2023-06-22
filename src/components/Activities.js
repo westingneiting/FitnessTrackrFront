@@ -27,17 +27,18 @@ function Activities() {
 
   return (
     <div>
-      <Typography variant="h2" component="h2">Activities</Typography>
+      <Typography variant="h2" component="h2" style={{color: 'white', marginLeft: '1%'}}>Activities</Typography>
       <TextField
+        
         variant="filled"
         label="Search activities"
         value={searchQuery}
         onChange={handleSearchChange}
-        style={{ marginBottom: '1rem' }}
+        style={{ backgroundColor: 'white',marginBottom: '1rem', marginLeft: '1%' }}
         size='small'
       />
       {filteredActivities.length === 0 ? (
-        <p>No activities found</p>
+        <p style={{color: 'white', marginLeft: '1%'}}>No activities found</p>
       ) : (
         filteredActivities.map((activity) => (
           <Card key={activity.id} style={

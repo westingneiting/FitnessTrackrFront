@@ -4,7 +4,6 @@ import { Button, Card, CardContent, TextField, Box } from '@mui/material';
 
 const styles = {
   card: {
-    fontFamily: 'Roboto',
     marginTop: '10px',
     width: '30%',
     padding: '10px',

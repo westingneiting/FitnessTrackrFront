@@ -21,7 +21,18 @@ const styles = {
   },
   container: {
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
+  
+  },
+  loginBtn: {
+    display: 'flex',
+    flexDirection: 'column',
+    
+  },
+  rgstrBtn: {
+    display: 'flex',
+    flexDirection: 'column',
+   
   }
 };
 
@@ -41,13 +52,13 @@ function NavBar({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
         <Toolbar style={styles.toolbar}>
           <h1 style={styles.h1}>Fitness Trackr</h1>
           <div style={styles.container}>
-          <Button variant="outlined">
+          <Button variant="outlined" style={{margin: '.5%'}}>
             <Link to='/Routines'
                 style={{color: 'white', textDecoration: 'none'}}>
                   Routines
             </Link>
           </Button>
-          <Button variant="outlined">
+          <Button variant="outlined" style={{margin: '.5%'}}>
             <Link to='/Activities'
                 style={{color: 'white', textDecoration: 'none'}}>
                   Activities
@@ -89,25 +100,27 @@ function NavBar({ setToken, setIsLoggedIn, isLoggedIn, navigate }) {
                 </Link>
               </Button>
             )}
+            <div style={styles.loginBtn}>
             {location.pathname !== '/login' && (
               <>
               <p style={styles}>Already have an account?</p>
-              <Button variant="outlined">
+              <Button variant="outlined" style={{margin: '.5%'}}>
                   <Link to='/login' 
                   style={{color: 'white', textDecoration: 'none'}}>
                     Login
                   </Link>
               </Button>
               </>
-              )}
+              )}</div>
+              <div style={styles.rgstrBtn}>
               {location.pathname !== '/register' && (
                 <>
                 <p style={styles}>Don't have an account?</p>
-              <Button variant="outlined">
+              <Button variant="outlined" style={{margin: '.5%'}}>
                   <Link to='/register' style={{color: 'white', textDecoration: 'none'}}>Register</Link>
               </Button>
               </>
-              )}
+              )}</div>
             </>
           ) : null}
           </div>

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { getAllRoutines } from "../ajax-requests";
-import { Card, CardContent, Typography } from '@mui/material';
-import Home from './Home'
+import { Card, CardContent, Typography, TextField, Button } from '@mui/material';
+import CreateRoutine from './CreateRoutine'
 import '../style.css'
 
 
 function Routines() {
   const [routines, setRoutines] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     async function fetchRoutines() {
@@ -15,11 +17,22 @@ function Routines() {
     }
     fetchRoutines();
   }, []);
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  function filterRoutines(routines, searchQuery) {
+    return routines.filter(routine => routine.name.toLowerCase().includes(searchQuery.toLowerCase()));
+  }
+
+  const filteredRoutines = filterRoutines(routines, searchQuery);
   
   return (
   
     <div>
       <Typography variant="h2" component="h2" style={{color: 'white', marginLeft: '1%'}}>Routines</Typography>
+      
       <TextField
         variant="filled"
         label="Search activities"
@@ -28,10 +41,16 @@ function Routines() {
         style={{ backgroundColor: 'white',marginBottom: '1rem', marginLeft: '1%' }}
         size='small'
       />
-      {filteredActivities.length === 0 ? (
-        <p style={{color: 'white', marginLeft: '1%'}}>No activities found</p>
+      <Button variant="outlined" style={{background: 'white', marginLeft: '1%'}}>
+              <Link to={CreateRoutine}>
+              Create New Routine
+              </Link>
+            </Button>
+      {filteredRoutines.length === 0 ? (
+        <p style={{color: 'white', marginLeft: '1%'}}>No routines found</p>
       ) : (
-        filteredActivities.map((activity) => (
+        filteredRoutines.map((routine) => (
+        
         <Card key={routine.id} style={
           {display: 'flex',
           justifyContent: 'space-between',

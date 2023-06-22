@@ -7,17 +7,19 @@ import {
   Routines,
   Activities,
   NavBar,
+  CreateRoutine
 
 } from './';
 import '../style.css'
 
-import { myData } from '../ajax-requests';
+import { myData, getAllRoutines } from '../ajax-requests';
 
 function App() {
 
   const [token, setToken] = useState('');
   const [user, setUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [routines, setRoutines] = useState([]);
 
   const navigate = useNavigate();
   
@@ -26,11 +28,22 @@ function App() {
       setToken(window.localStorage.getItem('token'));
     }
   }
-  
+
+  async function fetchData() {
+    await Promise.all([getMyData(), getRoutines()]);
+  }
+
   async function getMyData() {
     const results = await myData(token);
-    if (results.success){
+    if (results && results.success) {
       setUser(results.data);
+    }
+  }
+
+  async function getRoutines() {
+    const routinesData = await getAllRoutines(token);
+    if (routinesData.success) {
+      setRoutines(routinesData.data);
     }
   }
 
@@ -40,6 +53,7 @@ function App() {
   
   useEffect (() => {
    if (token) {
+    fetchData();
     getMyData();
     setIsLoggedIn(true);
    }
@@ -80,7 +94,8 @@ function App() {
           element={<Login 
             setToken={setToken} 
             setIsLoggedIn={setIsLoggedIn}
-            navigate={navigate} 
+            navigate={navigate}
+            isLoggedIn={isLoggedIn}
           />}
         />
         <Route 
@@ -89,15 +104,19 @@ function App() {
             user={user}
             token={token}
             navigate={navigate}
+            routines={routines}
           />}
         />
-        {/* <Route 
+        <Route 
            path='/create-routine'
            element={<CreateRoutine
-            token={token} 
+            user={user}
+            token={token}
+            routines={routines}
+            setRoutines={setRoutines}
             navigate={navigate}
           />}
-        /> */}
+        />
         {/* <Route 
           path='/update-routine/:routineId'
           element={<UpdateRoutine

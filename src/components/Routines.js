@@ -54,7 +54,7 @@ function Routines() {
           size='small'
         />
         <Button variant="outlined" style={{background: 'transparent', marginLeft: '1%'}}>
-                <Link to={CreateRoutine} style={{textDecoration: 'none', color: 'white'}}>
+                <Link to='/create-routine' style={{textDecoration: 'none', color: 'white'}}>
                 Create New Routine
                 </Link>
               </Button>

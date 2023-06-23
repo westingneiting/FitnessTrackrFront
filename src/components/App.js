@@ -68,15 +68,27 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Home isLoggedIn={isLoggedIn} token={token} />}
+          element={<Home 
+            isLoggedIn={isLoggedIn} 
+            token={token} 
+            />
+          }
         />
         <Route
           path="/activities"
-          element={<Activities isLoggedIn={isLoggedIn} token={token} />}
+          element={<Activities 
+            isLoggedIn={isLoggedIn} 
+            token={token} 
+            />
+          }
         />
         <Route
           path="/register"
-          element={<Register setToken={setToken} navigate={navigate} />}
+          element={<Register 
+            setToken={setToken} 
+            navigate={navigate} 
+            />
+          }
         />
         <Route
           path="/login"
@@ -84,7 +96,7 @@ function App() {
             <Login
               setToken={setToken}
               navigate={navigate}
-              isLoggedIn={isLoggedIn} // Pass isLoggedIn as a prop
+              isLoggedIn={isLoggedIn} 
             />
           }
         />

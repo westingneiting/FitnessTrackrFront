@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import { 
+import {
   Register,
   Login,
   Home,
@@ -8,24 +8,23 @@ import {
   Activities,
   NavBar,
   CreateRoutine
-
 } from './';
-import '../style.css'
+import '../style.css';
 
 import { myData, getAllRoutines } from '../ajax-requests';
 
 function App() {
-
   const [token, setToken] = useState('');
   const [user, setUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [routines, setRoutines] = useState([]);
 
   const navigate = useNavigate();
-  
+
   function tokenCheck() {
     if (window.localStorage.getItem('token')) {
       setToken(window.localStorage.getItem('token'));
+      setIsLoggedIn(true); // Update isLoggedIn when token is set
     }
   }
 
@@ -49,16 +48,15 @@ function App() {
 
   useEffect(() => {
     tokenCheck();
-  }, [])
-  
-  useEffect (() => {
-   if (token) {
-    fetchData();
-    getMyData();
-    setIsLoggedIn(true);
-   }
-  }, [token])
-  
+  }, []);
+
+  useEffect(() => {
+    if (token) {
+      fetchData();
+      getMyData();
+    }
+  }, [token]);
+
   return (
     <div>
       <NavBar
@@ -68,63 +66,51 @@ function App() {
         navigate={navigate}
       />
       <Routes>
-        <Route 
-          path='/'
-          element={<Home
-            isLoggedIn={isLoggedIn} 
-            token={token}
-          />}
+        <Route
+          path="/"
+          element={<Home isLoggedIn={isLoggedIn} token={token} />}
         />
-        <Route 
-          path='/activities'
-          element={<Activities 
-            isLoggedIn={isLoggedIn} 
-            token={token}
-          />}
+        <Route
+          path="/activities"
+          element={<Activities isLoggedIn={isLoggedIn} token={token} />}
         />
-        <Route 
-          path='/register' 
-          element={<Register 
-            setToken={setToken} 
-            navigate={navigate}
-          />}
+        <Route
+          path="/register"
+          element={<Register setToken={setToken} navigate={navigate} />}
         />
-        <Route 
-          path='/login'
-          element={<Login 
-            setToken={setToken} 
-            setIsLoggedIn={setIsLoggedIn}
-            navigate={navigate}
-            isLoggedIn={isLoggedIn}
-          />}
+        <Route
+          path="/login"
+          element={
+            <Login
+              setToken={setToken}
+              navigate={navigate}
+              isLoggedIn={isLoggedIn} // Pass isLoggedIn as a prop
+            />
+          }
         />
-        <Route 
-          path='/routines'
-          element={<Routines
-            user={user}
-            token={token}
-            navigate={navigate}
-            routines={routines}
-          />}
+        <Route
+          path="/routines"
+          element={
+            <Routines
+              user={user}
+              token={token}
+              navigate={navigate}
+              routines={routines}
+            />
+          }
         />
-        <Route 
-           path='/create-routine'
-           element={<CreateRoutine
-            user={user}
-            token={token}
-            routines={routines}
-            setRoutines={setRoutines}
-            navigate={navigate}
-          />}
+        <Route
+          path="/create-routine"
+          element={
+            <CreateRoutine
+              user={user}
+              token={token}
+              routines={routines}
+              setRoutines={setRoutines}
+              navigate={navigate}
+            />
+          }
         />
-        {/* <Route 
-          path='/update-routine/:routineId'
-          element={<UpdateRoutine
-            routine={routines} 
-            token={token}
-            navigate={navigate}
-          />}
-        /> */}
       </Routes>
     </div>
   );

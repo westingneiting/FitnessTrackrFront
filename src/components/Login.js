@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { login } from '../ajax-requests';
 import { Button, Card, CardContent, TextField, Box } from '@mui/material';
 
@@ -20,39 +20,45 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '50vh',
+    height: '50vh'
   },
   h2: {
     color: 'white'
   },
   textField: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-  },
+    backgroundColor: 'rgba(255, 255, 255, 0.8)'
+  }
 };
 
-function Login({ setToken, navigate }) {
+function Login({ setToken, navigate, isLoggedIn }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [submitting, setSubmitting] = useState(false); 
 
   async function handleSubmit(event) {
     event.preventDefault();
     const user = { username, password };
-
+  
+    setSubmitting(true);
+  
     const results = await login(user);
-
+  
     if (results.success) {
-      setToken(results.data.token);
-      window.localStorage.setItem('token', results.data.token);
+      const { user: loggedInUser, message, token } = results.data;
+      window.localStorage.setItem('token', token);
+      setUsername('');
+      setPassword('');
+  
+      setToken(token);
     }
+  
+    setSubmitting(false);
   }
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      console.log('isLoggedIn:', isLoggedIn);
-      navigate('/');
-    }
-  }, [isLoggedIn, navigate]);
+  if (isLoggedIn) {
+    navigate('/'); 
+    return null;
+  }
 
   return (
     <div style={styles.container}>
@@ -82,8 +88,12 @@ function Login({ setToken, navigate }) {
                 required
                 style={styles.textField}
               />
-              <Button type="submit" variant="outlined">
-                Submit
+              <Button
+                type="submit"
+                variant="outlined"
+                disabled={submitting}
+              >
+                {submitting ? 'Submitting...' : 'Submit'}
               </Button>
             </Box>
           </form>

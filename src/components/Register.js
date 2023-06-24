@@ -30,7 +30,7 @@ const styles = {
   },
 };
 
-function Register({ setToken, navigate }) {
+function Register({ navigate }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   
@@ -41,15 +41,11 @@ function Register({ setToken, navigate }) {
       password: password 
     };
   const results = await registerUser(userInfo);
-    // setToken(results.data.token);
-    // window.localStorage.setItem("token", results.data.token);
+  
     navigate("/login");
-    console.log("Navigating to /login");
 
     setUsername("");
     setPassword("");
-    if (results.success) {
-    }
   }
   
   return (

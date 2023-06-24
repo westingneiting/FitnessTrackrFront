@@ -30,7 +30,7 @@ const styles = {
   }
 };
 
-function Login({ setToken, navigate, isLoggedIn }) {
+function Login({ setToken, navigate, setIsLoggedIn }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [submitting, setSubmitting] = useState(false); 
@@ -39,27 +39,19 @@ function Login({ setToken, navigate, isLoggedIn }) {
     event.preventDefault();
     const user = { username, password };
   
-    setSubmitting(true);
   
     const results = await login(user);
   
-    if (results.success) {
-      const { user: loggedInUser, message, token } = results.data;
+    console.log(results);
+      const { user: { token } } = results;
       window.localStorage.setItem('token', token);
-      setUsername('');
-      setPassword('');
-  
+      
       setToken(token);
-    }
+      setIsLoggedIn(true);
+      navigate('/');
+
+  }
   
-    setSubmitting(false);
-  }
-
-  if (isLoggedIn) {
-    navigate('/'); 
-    return null;
-  }
-
   return (
     <div style={styles.container}>
       <Card style={styles.card}>

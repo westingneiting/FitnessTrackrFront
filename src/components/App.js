@@ -24,7 +24,7 @@ function App() {
   function tokenCheck() {
     if (window.localStorage.getItem('token')) {
       setToken(window.localStorage.getItem('token'));
-      setIsLoggedIn(true); // Update isLoggedIn when token is set
+      setIsLoggedIn(true);
     }
   }
 
@@ -96,6 +96,7 @@ function App() {
             <Login
               setToken={setToken}
               navigate={navigate}
+              setIsLoggedIn={setIsLoggedIn}
               isLoggedIn={isLoggedIn} 
             />
           }

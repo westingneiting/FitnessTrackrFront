@@ -172,7 +172,7 @@ export const getAllRoutines = async () => {
   }
   }
 
-  export const createRoutine = async (token, { name, goal, isPublic }) => {
+  export const createRoutine = async (token, name, goal, isPublic ) => {
   try {
     const response = await fetch(`${BASE_URL}/routines`, {
       method: "POST",

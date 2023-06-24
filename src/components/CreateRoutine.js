@@ -37,7 +37,7 @@ const CreateRoutine = ({ token, routines, setRoutines }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const newRoutine = await createRoutine(token, isPublic, name, goal);
+    const newRoutine = await createRoutine(token, name, goal, isPublic );
     setRoutines([...routines, newRoutine]);
     setName("");
     setGoal("");

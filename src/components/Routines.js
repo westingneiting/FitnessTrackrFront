@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getAllRoutines } from "../ajax-requests";
 import { Card, CardContent, Typography, TextField, Button } from '@mui/material';
-import CreateRoutine from './CreateRoutine'
 import '../style.css'
 
 const styles = {
@@ -54,10 +53,10 @@ function Routines() {
           size='small'
         />
         <Button variant="outlined" style={{background: 'transparent', marginLeft: '1%'}}>
-                <Link to='/create-routine' style={{textDecoration: 'none', color: 'white'}}>
-                Create New Routine
-                </Link>
-              </Button>
+          <Link to='/create-routine' style={{textDecoration: 'none', color: 'white'}}>
+          Create New Routine
+          </Link>
+        </Button>
         {filteredRoutines.length === 0 ? (
           <p style={{color: 'white', marginLeft: '1%'}}>No routines found</p>
         ) : (

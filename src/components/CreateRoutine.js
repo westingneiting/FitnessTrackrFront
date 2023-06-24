@@ -30,18 +30,22 @@ const styles = {
   },
 };
 
-const CreateRoutine = ({ token, routines, setRoutines }) => {
+const CreateRoutine = ({ token, setRoutines }) => {
   const [name, setName] = useState("");
   const [goal, setGoal] = useState("");
   const [isPublic, setIsPublic] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const newRoutine = await createRoutine(token, name, goal, isPublic );
-    setRoutines([...routines, newRoutine]);
-    setName("");
-    setGoal("");
-    setIsPublic(false);
+    try {
+      const newRoutine = await createRoutine(token, name, goal, isPublic);
+      setRoutines((routines) => [...routines, newRoutine]);
+      setName("");
+      setGoal("");
+      setIsPublic(false);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -55,11 +59,7 @@ const CreateRoutine = ({ token, routines, setRoutines }) => {
                 label="Name"
                 variant="filled"
                 value={name}
-                type="text"
-                placeholder="name"
-                onChange={(event) => {
-                  setName(event.target.value);
-                }}
+                onChange={(event) => setName(event.target.value)}
                 required
                 style={styles.textField}
               />
@@ -68,11 +68,7 @@ const CreateRoutine = ({ token, routines, setRoutines }) => {
                 label="Goal"
                 variant="filled"
                 value={goal}
-                type="text"
-                placeholder="goal"
-                onChange={(event) => {
-                  setGoal(event.target.value);
-                }}
+                onChange={(event) => setGoal(event.target.value)}
                 required
                 style={styles.textField}
               />
@@ -80,12 +76,9 @@ const CreateRoutine = ({ token, routines, setRoutines }) => {
               <label style={styles.h2}>
                 Public:
                 <input
-                  variant="standard"
                   checked={isPublic}
                   type="checkbox"
-                  onChange={(event) => {
-                    setIsPublic(event.target.checked);
-                  }}
+                  onChange={(event) => setIsPublic(event.target.checked)}
                 />
               </label>
 

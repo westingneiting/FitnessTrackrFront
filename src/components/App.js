@@ -118,7 +118,6 @@ function App() {
             <CreateRoutine
               user={user}
               token={token}
-              routines={routines}
               setRoutines={setRoutines}
               navigate={navigate}
             />

@@ -42,10 +42,9 @@ function Register({ navigate }) {
     };
   const results = await registerUser(userInfo);
   
-    navigate("/login");
-
     setUsername("");
     setPassword("");
+    navigate("/login");
   }
   
   return (

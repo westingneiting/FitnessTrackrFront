@@ -39,17 +39,17 @@ function Login({ setToken, navigate, setIsLoggedIn }) {
     event.preventDefault();
     const user = { username, password };
   
-  
-    const results = await login(user);
-  
-    console.log(results);
+    try {
+      const results = await login(user);
       const { user: { token } } = results;
       window.localStorage.setItem('token', token);
-      
+  
       setToken(token);
       setIsLoggedIn(true);
       navigate('/');
-
+    } catch (error) {
+      alert('Username or password incorrect, please try again.');
+    }
   }
   
   return (
